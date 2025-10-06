@@ -35,6 +35,7 @@ namespace Blogy.DataAccess.Repositories.GenericRepositories
             await _context.SaveChangesAsync();
         }
 
+
         public async Task<List<TEntity>> GetAllAsync()
         {
             return await _table.AsNoTracking().ToListAsync();
