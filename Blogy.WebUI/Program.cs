@@ -1,7 +1,9 @@
 using Blogy.Business.Mappings;
+using Blogy.Business.Services.BlogServices;
 using Blogy.Business.Services.CategoryServices;
 using Blogy.Business.Validators.CategoryValidator;
 using Blogy.DataAccess.Context;
+using Blogy.DataAccess.Repositories.BlogRepositories;
 using Blogy.DataAccess.Repositories.CategoryRepositories;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +16,9 @@ builder.Services.AddValidatorsFromAssembly(typeof(CreateCategoryValidator).Assem
 
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+
+builder.Services.AddScoped<IBlogRepository, BlogRepository>();
+builder.Services.AddScoped<IBlogService, BlogService>();
 
 
 
