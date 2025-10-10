@@ -4,6 +4,7 @@ using Blogy.Business.Services.CategoryServices;
 using Blogy.Business.Validators.CategoryValidator;
 using Blogy.DataAccess.Context;
 using Blogy.DataAccess.Repositories.BlogRepositories;
+using Blogy.DataAccess.Repositories.BlogTagRepositories;
 using Blogy.DataAccess.Repositories.CategoryRepositories;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -22,6 +23,8 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 builder.Services.AddScoped<IBlogService, BlogService>();
+
+builder.Services.AddScoped<IBlogTagRepository, BlogTagRepository>();
 
 
 

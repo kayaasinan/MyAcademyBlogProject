@@ -1,6 +1,6 @@
-﻿@model CreateBlogDto
+﻿@model UpdateBlogDto
 @{
-    ViewData["Title"] = "CreateBlog";
+    ViewData["Title"] = "UpdateBlog";
     Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
 }
 
@@ -9,16 +9,17 @@
         <div class="card w-100">
             <div class="card-body p-4">
                 <div class="d-flex mb-4 justify-content-between align-items-center">
-                    <h5 class="mb-0 fw-bold">Yeni Blog Oluştur</h5>
+                    <h5 class="mb-0 fw-bold">Blog Güncelle</h5>
                 </div>
-              
+
                 <form method="post">
+                    <input type="hidden" asp-for="Id" />
                     <div class="form-group">
-                        <input type="text" asp-for="Title" class="form-control" placeholder="Başlık Giriniz"/>
+                        <input type="text" asp-for="Title" class="form-control" placeholder="Başlık Giriniz" />
                         <span class="text-danger" asp-validation-for="Title"></span>
                     </div>
                     <div class="form-group">
-                        <textarea type="text" asp-for="Description" class="form-control" placeholder="Açıklama Giriniz" rows="8" ></textarea>
+                        <textarea type="text" asp-for="Description" class="form-control" placeholder="Açıklama Giriniz" rows="8"></textarea>
                         <span class="text-danger" asp-validation-for="Description"></span>
                     </div>
                     <div class="form-group">
@@ -39,7 +40,7 @@
                         </select>
                         <span class="text-danger" asp-validation-for="CategoryId"></span>
                     </div>
-                    <button class="btn btn-info">Blog Oluştur</button>
+                    <button class="btn btn-info">Güncelle</button>
                 </form>
             </div>
         </div>
