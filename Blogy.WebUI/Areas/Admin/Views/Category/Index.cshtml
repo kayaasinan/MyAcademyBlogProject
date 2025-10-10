@@ -30,10 +30,10 @@
                                     <th>@count</th>
                                     <td>@item.CategoryName</td>
                                     <td class="text-center">
-                                        <button type="button" onclick="confirmDelete('/Admin/Category/DeleteCategory/@item.Id')" class="btn btn-danger">Sil</button>
+                                        <button type="button" onclick="confirmDelete('/Admin/Category/DeleteCategory/@item.Id')" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                     </td>
                                     <td class="text-center">
-                                        <a href="/Admin/Category/UpdateCategory/@item.Id" class="btn btn-info">Güncelle</a>
+                                        <a href="/Admin/Category/UpdateCategory/@item.Id" class="btn btn-info"><i class="fa fa-pen"></i></a>
                                     </td>
                                 </tr>
                             }
