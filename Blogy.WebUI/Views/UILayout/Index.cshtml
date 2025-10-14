@@ -18,11 +18,11 @@
 		<div class="site-mobile-menu-body"></div>
 	</div>
 
-	@await Component.InvokeAsync("_UILayoutHeadComponent")
+	@await Component.InvokeAsync("_UILayoutNavbarComponent")
 
 	@RenderBody()
 
-	@await Component.InvokeAsync("_UILayoutNavbarComponent")
+	@await Component.InvokeAsync("_UILayoutFooterComponent")
 	<!-- Preloader -->
 	<div id="overlayer"></div>
 	<div class="loader">
