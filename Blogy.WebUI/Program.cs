@@ -1,37 +1,11 @@
-using Blogy.Business.Mappings;
-using Blogy.Business.Services.BlogServices;
-using Blogy.Business.Services.CategoryServices;
-using Blogy.Business.Validators.CategoryValidator;
-using Blogy.DataAccess.Context;
-using Blogy.DataAccess.Repositories.BlogRepositories;
-using Blogy.DataAccess.Repositories.BlogTagRepositories;
-using Blogy.DataAccess.Repositories.CategoryRepositories;
-using FluentValidation;
-using FluentValidation.AspNetCore;
-using Microsoft.EntityFrameworkCore;
+using Blogy.Business.Extensions;
+using Blogy.DataAccess.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
-builder.Services.AddAutoMapper(typeof(CategoryMappings).Assembly);
-builder.Services.AddFluentValidationAutoValidation()
-                .AddFluentValidationClientsideAdapters()
-                .AddValidatorsFromAssembly(typeof(CreateCategoryValidator).Assembly);
-
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-
-builder.Services.AddScoped<IBlogRepository, BlogRepository>();
-builder.Services.AddScoped<IBlogService, BlogService>();
-
-builder.Services.AddScoped<IBlogTagRepository, BlogTagRepository>();
-
-
-
-builder.Services.AddDbContext<AppDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+builder.Services.AddServicesExt();
+builder.Services.AddRepositoriesExt(builder.Configuration);
 
 
 builder.Services.AddControllersWithViews();

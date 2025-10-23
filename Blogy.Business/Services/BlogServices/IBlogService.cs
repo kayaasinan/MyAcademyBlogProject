@@ -1,4 +1,5 @@
 ﻿using Blogy.Business.DTOs.BlogDtos;
+using Blogy.Entity.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace Blogy.Business.Services.BlogServices
     {
         Task<List<ResultBlogDto>> GetBlogsWithCategoriesAsync();
         Task<List<ResultBlogDto>> GetBlogsByCategoryIdAsync(int categoryId);
+        Task<List<ResultBlogDto>> GetLast3BlogsAsync();
     }
 }
