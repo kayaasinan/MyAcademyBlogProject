@@ -1,11 +1,12 @@
 ﻿using Blogy.Business.DTOs.CategoryDtos;
 using Blogy.Business.Services.CategoryServices;
+using Blogy.WebUI.Consts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blogy.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area(Roles.Admin)]
     [Authorize]
     public class CategoryController(ICategoryService _categoryService) : Controller
     {

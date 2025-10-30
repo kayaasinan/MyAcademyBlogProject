@@ -1,4 +1,5 @@
 ﻿using Blogy.Entity.Entities;
+using Blogy.WebUI.Consts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -6,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Blogy.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area(Roles.Admin)]
     [Authorize]
     public class RoleController(RoleManager<AppRole> _roleManager) : Controller
     {
@@ -42,5 +43,6 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
+      
     }
 }

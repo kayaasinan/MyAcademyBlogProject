@@ -1,4 +1,5 @@
-﻿@model List<ResultCategoryDto>
+﻿
+@model List<ResultUserDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
@@ -17,8 +18,11 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Kategori Adı</th>
-                                <th style="text-align: center">Sil</th>
+                                <th>Ad Soyad</th>
+                                <th>Kullanıcı Adı</th>
+                                <th>Email</th>
+                                <th>Roller</th>
+                                <th style="text-align: center">Rol Ata</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,9 +31,17 @@
                                 count++;
                                 <tr>
                                     <th>@count</th>
-                                    <td>@item.CategoryName</td>
+                                    <td>@item.FullName</td>
+                                    <td>@item.UserName</td>
+                                    <td>@item.Email</td>
+                                    <td>
+                                        @foreach (var role in item.Roles)
+                                        {
+                                            <span class="badge bg-primary me-1">@role</span>
+                                        }
+                                    </td>
                                     <td class="text-center">
-                                        <button type="button" onclick="confirmDelete('/Admin/Category/DeleteCategory/@item.Id')" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        <a href="/Admin/Users/AssingRole/@item.Id" class="btn btn-outline-info">Rol Ata</a>
                                     </td>
                                 </tr>
                             }
@@ -42,6 +54,4 @@
 </div>
 <div class="mb-4">
     <a href="/Admin/Category/CreateCategory/" class="btn btn-primary">Yeni Kategori Oluştur</a>
-</div>
-
 
