@@ -1,15 +1,10 @@
-﻿using AutoMapper;
-using Blogy.Business.DTOs.BlogDtos;
+﻿using Blogy.Business.DTOs.BlogDtos;
 using Blogy.Business.Services.BlogServices;
 using Blogy.Business.Services.CategoryServices;
-using Blogy.DataAccess.Repositories.BlogRepositories;
-using Blogy.DataAccess.Repositories.CategoryRepositories;
 using Blogy.WebUI.Consts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 
 namespace Blogy.WebUI.Areas.Admin.Controllers
 {
