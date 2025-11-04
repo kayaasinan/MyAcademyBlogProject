@@ -1,0 +1,30 @@
+﻿@model CreateCommentDto
+@{
+    ViewData["Title"] = "CreateComment";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12 d-flex align-items-stretch">
+        <div class="card w-100">
+            <div class="card-body p-4">
+                <div class="d-flex mb-4 justify-content-between align-items-center">
+                    <h5 class="mb-0 fw-bold">Yeni Yorum Oluştur</h5>
+                </div>
+                <form method="post">
+                    <label>Blog</label>
+                    <select type="text" asp-for="BlogId" class="form-control" asp-items="@ViewBag.blogs"></select>
+                    <span class="text-danger" asp-validation-for="BlogId"></span>
+                    <br />
+                    <label>Yorum</label>
+                    <textarea type="text" asp-for="Content" class="form-control" rows="5"></textarea>
+                    <span class="text-danger" asp-validation-for="Content"></span>
+                    <br />
+                    <button class="btn btn-primary">Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
