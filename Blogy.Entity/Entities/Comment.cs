@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Blogy.Entity.Entities
 {
-    public class Comment:BaseEntity
+    public class Comment : BaseEntity
     {
         public string Content { get; set; }
         public int BlogId { get; set; }
