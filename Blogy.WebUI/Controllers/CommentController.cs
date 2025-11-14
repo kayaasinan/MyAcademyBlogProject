@@ -1,10 +1,8 @@
 ﻿using Blogy.Business.DTOs.CommentDtos;
 using Blogy.Business.Services.CommentServices;
 using Blogy.Entity.Entities;
-using Humanizer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace Blogy.WebUI.Controllers
 {

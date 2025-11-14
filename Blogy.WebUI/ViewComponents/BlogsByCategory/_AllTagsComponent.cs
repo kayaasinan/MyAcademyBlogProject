@@ -1,6 +1,5 @@
 ﻿using Blogy.Business.Services.TagServices;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace Blogy.WebUI.ViewComponents.BlogsByCategory
 {

@@ -1,12 +1,6 @@
 ﻿using Blogy.Entity.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blogy.DataAccess.Context
 {
@@ -22,5 +16,6 @@ namespace Blogy.DataAccess.Context
         public DbSet<Social> Socials { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<ContactUs> ContactUses { get; set; }
     }
 }
