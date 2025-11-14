@@ -1,43 +1,79 @@
 ﻿
 @model RegisterDto
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/UILayout/Index.cshtml";
+    Layout = null;
 }
-<div class="container">
-<h1>Yeni Kullanıcı Kaydı</h1>
+<!doctype html>
+<html lang="en">
 
-<form method="post">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spike Free Bootstrap Admin Template by WrapPixel</title>
+    <link rel="shortcut icon" type="image/png" href="~/Spike-Bootstrap-1.0.0/src/assets/images/logos/favicon.png" />
+    <link rel="stylesheet" href="~/Spike-Bootstrap-1.0.0/src/assets/css/styles.min.css" />
+</head>
 
-    <div class="form-group">
-        <label>Adınız</label>
-        <input type="text" class="form-control" asp-for="FirstName" required />
-    </div>
+<body>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+         data-sidebar-position="fixed" data-header-position="fixed">
+        <div class="position-relative overflow-hidden text-bg-light min-vh-100 d-flex align-items-center justify-content-center">
+            <div class="d-flex align-items-center justify-content-center w-100">
+                <div class="row justify-content-center w-100">
+                    <div class="col-md-8 col-lg-6 col-xxl-3">
+                        <div class="card mb-0">
+                            <div class="card-body">
+                                <div class="text-nowrap logo-img text-center d-block py-3 w-100">
+                                    <h3 class="fw-bold text-primary m-0">Blogy</h3>
+                                </div>
+                                <div class="mb-4">
+                                    <p class="text-center">Kullanıcı bilgilerinizle giriş yapabilirsiniz..</p>
+                                </div>
 
-    <div class="form-group">
-        <label>Soyadınız</label>
-        <input type="text" class="form-control" asp-for="LastName" required />
+                                <form method="post">
+                                    <div class="mb-3">
+                                        <label class="form-label">Adınız</label>
+                                        <input type="text" class="form-control" asp-for="FirstName">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Soyadınız</label>
+                                        <input type="text" class="form-control" asp-for="LastName">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Kullanıcı Adınız</label>
+                                        <input type="text" class="form-control" asp-for="UserName">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Mail Adresiniz</label>
+                                        <input type="email" class="form-control" asp-for="Email">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Şifreniz</label>
+                                        <input type="password" class="form-control" asp-for="Password">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Tekrar Şifreniz</label>
+                                        <input type="password" class="form-control" asp-for="ConfirmPassword">
+                                    </div>
+                                    <span class="text-danger">@Html.ValidationSummary()</span>
+                                    <button class="btn btn-primary w-100 py-8 fs-4 mb-4">Kayıt Ol</button>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <p class="fs-4 mb-0 fw-bold">Zaten hesabınız var mı?</p>
+                                        <a class="text-primary fw-bold ms-2" href="/Login/Index">Giriş Yap</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- solar icons -->
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
 
-    <div class="form-group">
-        <label>Kullanıcı Adınız</label>
-        <input type="text" class="form-control" asp-for="UserName" required />
-    </div>
-
-    <div class="form-group">
-        <label>Email Adresiniz</label>
-        <input type="email" class="form-control" asp-for="Email" required />
-    </div>
-    <div class="form-group">
-        <label>Şifreniz</label>
-        <input type="password" class="form-control" asp-for="Password" required />
-    </div>
-    <div class="form-group">
-        <label>Şifreyi Tekrar Girin</label>
-        <input type="password" class="form-control" asp-for="ConfirmPassword" required />
-    </div>
-    <span class="text-danger">@Html.ValidationSummary()</span>
-    <br />
-    <button class="btn btn-outline-primary">Kayıt Ol</button>
-</form>
-</div>
+</html>

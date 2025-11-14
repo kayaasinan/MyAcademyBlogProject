@@ -23,15 +23,15 @@
                     <div class="col-lg-4 mb-4">
                         <div class="post-entry-alt">
                             <a href="single.html" class="img-link">
-                                <img src="@blogs.CoverImage" alt="Image" class="img-fluid" />
+                                <img src="@blogs.CoverImage" style="width:470px; height:225px" alt="Image" class="img-fluid" />
                             </a>
                             <div class="excerpt">
                                 <h2><a href="single.html">@blogs.Title</a></h2>
                                 <div class="post-meta align-items-center text-left clearfix">
                                     <figure class="author-figure mb-0 me-3 float-start">
-                                        <img src="images/person_1.jpg" alt="Image" class="img-fluid" />
+                                        <img src="@blogs.Writer.ImageUrl" alt="Image" class="img-fluid" />
                                     </figure>
-                                    <span class="d-inline-block mt-1">By <a href="#">David Anderson</a></span>
+                                    <span class="d-inline-block mt-1"><a href="#">@blogs.Writer.FullName</a></span>
                                     <span>&nbsp;-&nbsp; @blogs.CreatedDate.ToShortDateString()</span>
                                 </div>
 
@@ -40,7 +40,7 @@
                                         ? blogs.Description.Substring(0, 100) + "..."
                                         : blogs.Description)
                                 </p>
-                        <p><a href="#" class="read-more">Devamını Oku</a></p>
+                        <p><a href="/Blog/BlogDetails/@blogs.Id" class="read-more">Devamını Oku</a></p>
                             </div>
                         </div>
                     </div>
@@ -50,3 +50,4 @@
         </div>
     </section>
 }
+

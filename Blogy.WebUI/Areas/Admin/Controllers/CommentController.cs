@@ -1,5 +1,4 @@
-﻿using Blogy.Business.DTOs.BlogDtos;
-using Blogy.Business.DTOs.CommentDtos;
+﻿using Blogy.Business.DTOs.CommentDtos;
 using Blogy.Business.Services.BlogServices;
 using Blogy.Business.Services.CommentServices;
 using Blogy.Entity.Entities;
@@ -8,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Threading.Tasks;
 
 namespace Blogy.WebUI.Areas.Admin.Controllers
 {

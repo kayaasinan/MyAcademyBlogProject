@@ -1,9 +1,6 @@
-﻿using Blogy.Business.DTOs.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Blogy.Business.DTOs.BlogDtos;
+using Blogy.Business.DTOs.Common;
+using Blogy.Business.DTOs.TagDtos;
 
 namespace Blogy.Business.DTOs.BlogTagDtos
 {
@@ -11,5 +8,7 @@ namespace Blogy.Business.DTOs.BlogTagDtos
     {
         public int BlogId { get; set; }
         public int TagId { get; set; }
+        public ResultBlogDto Blog { get; set; }
+        public ResultTagDto Tag { get; set; }
     }
 }

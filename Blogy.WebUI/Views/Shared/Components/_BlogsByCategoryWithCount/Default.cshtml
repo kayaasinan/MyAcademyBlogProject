@@ -1,0 +1,19 @@
+﻿@model List<ResultCategoryDto>
+@*
+        Blogs Category With Count
+ *@
+
+<div class="sidebar-box">
+    <h3 class="heading">Blog Kategorileri</h3>
+    <ul class="categories">
+        @foreach (var category in Model)
+        {
+            <li>
+                <a href="/Blog/GetBlogsByCategory/@category.Id">
+                    @category.CategoryName
+                    <span>@category.Blogs.Count</span>
+                </a>
+            </li>
+        }
+    </ul>
+</div>

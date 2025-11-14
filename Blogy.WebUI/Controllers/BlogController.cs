@@ -8,10 +8,12 @@ namespace Blogy.WebUI.Controllers
 {
     public class BlogController(IBlogService _blogService, ICategoryService _categoryService) : Controller
     {
-        public async Task<IActionResult> Index(int page=1,int pageSize=2)
+        public async Task<IActionResult> Index(int page = 1, int pageSize = 2)
         {
-            var blogs=await _blogService.GetAllAsync();
-            var values=new PagedList<ResultBlogDto>(blogs.AsQueryable(),page,pageSize);
+            var blogs = await _blogService.GetAllAsync();
+           
+            var values = new PagedList<ResultBlogDto>(blogs.AsQueryable(), page, pageSize);
+        
             return View(values);
         }
         public async Task<IActionResult> GetBlogsByCategory(int id)
@@ -20,6 +22,11 @@ namespace Blogy.WebUI.Controllers
             ViewBag.categoryName = category.Name;
             var blogs = await _blogService.GetBlogsByCategoryIdAsync(id);
             return View(blogs);
+        }
+        public async Task<IActionResult> BlogDetails(int id)
+        {
+            var blog = await _blogService.GetSingleByIdAsync(id);
+            return View(blog);
         }
     }
 }

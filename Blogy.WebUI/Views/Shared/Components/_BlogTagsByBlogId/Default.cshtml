@@ -1,0 +1,14 @@
+﻿@using Blogy.Business.DTOs.BlogTagDtos
+@model IList<ResultBlogTagDto>
+@*
+    Blog Tags By BlogId
+*@
+<div class="sidebar-box">
+    <h3 class="heading">Etiketler</h3>
+    <ul class="tags">
+        @foreach (var tag in Model)
+        {
+            <li><a href="#">@tag.Tag.Name</a></li>
+        }
+    </ul>
+</div>

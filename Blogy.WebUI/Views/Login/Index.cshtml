@@ -1,26 +1,64 @@
 ﻿@model LoginDto
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/UILayout/Index.cshtml";
+
+    Layout = null;
 }
 
-<div class="container">
-    <h3>Kullanıcı Girişi</h3>
+<!doctype html>
+<html lang="en">
 
-    <form method="post">
-        <div class="form-group">
-            <label>Kullanıcı Adınız</label>
-            <input type="text" class="form-control" asp-for="UserName" required />
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spike Free Bootstrap Admin Template by WrapPixel</title>
+    <link rel="shortcut icon" type="image/png" href="~/Spike-Bootstrap-1.0.0/src/assets/images/logos/favicon.png" />
+    <link rel="stylesheet" href="~/Spike-Bootstrap-1.0.0/src/assets/css/styles.min.css" />
+</head>
+
+<body>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+         data-sidebar-position="fixed" data-header-position="fixed">
+        <div class="position-relative overflow-hidden text-bg-light min-vh-100 d-flex align-items-center justify-content-center">
+            <div class="d-flex align-items-center justify-content-center w-100">
+                <div class="row justify-content-center w-100">
+                    <div class="col-md-8 col-lg-6 col-xxl-3">
+                        <div class="card mb-0">
+                            <div class="card-body">
+                                <div class="text-nowrap logo-img text-center d-block py-3 w-100">
+                                    <h3 class="fw-bold text-primary m-0">Blogy</h3>
+                                </div>
+                                <div class="mb-4">
+                                    <p class="text-center">Kullanıcı bilgilerinizle giriş yapabilirsiniz..</p>
+                                </div>
+                            
+                                <form method="post">
+                                    <div class="mb-3">
+                                        <label  class="form-label">Kullanıcı Adı</label>
+                                        <input type="text" class="form-control" asp-for="UserName">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Şifre</label>
+                                        <input type="password" class="form-control" asp-for="Password">
+                                    </div>
+                                    <span class="text-danger">@Html.ValidationSummary()</span>
+                                    <button class="btn btn-primary w-100 py-8 fs-4 mb-4">Giriş Yap</button>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <p class="fs-4 mb-0 fw-bold">Hesabınız yok mu?</p>
+                                        <a class="text-primary fw-bold ms-2" href="/Register/Index">Kayıt Ol</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- solar icons -->
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
 
-        <div class="form-group">
-            <label>Şifre</label>
-            <input type="password" class="form-control" asp-for="Password" required />
-        </div>
-        <br />
-        <span class="text-danger">@Html.ValidationSummary()</span>
-
-        <button class="btn btn-outline-primary">Giriş Yap</button>
-    </form>
-    
-</div>
+</html>
