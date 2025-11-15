@@ -19,7 +19,6 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Blog Id</th>
                                 <th>Yorum</th>
                                 <th style="text-align: center">Sil</th>
                             </tr>
@@ -30,8 +29,7 @@
                                 count++;
                                 <tr>
                                     <th>@count</th>
-                                    <td>@item.BlogId</td>
-                                    <td>@item.Content</td>
+                                    <td>@(item.Content?.Length > 100 ? item.Content.Substring(0, 25) + "..." : item.Content)</td>
                                     <td class="text-center">
                                         <button type="button" onclick="confirmDelete('/Admin/Comment/DeleteComment/@item.Id')" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                     </td>
