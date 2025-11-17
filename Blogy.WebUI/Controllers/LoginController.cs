@@ -1,5 +1,6 @@
 ﻿using Blogy.Business.DTOs.UserDTOs;
 using Blogy.Entity.Entities;
+using Blogy.WebUI.Consts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,10 +9,12 @@ namespace Blogy.WebUI.Controllers
     public class LoginController : Controller
     {
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
 
-        public LoginController(SignInManager<AppUser> signInManager)
+        public LoginController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
         }
 
         public IActionResult Index()
@@ -29,7 +32,16 @@ namespace Blogy.WebUI.Controllers
                 ModelState.AddModelError(string.Empty, "Kullanıcı adı veya şifre hatalı");
                 return View(dto);
             }
-            return RedirectToAction("Index", "Blog", new { area = "Admin" });
+            var user = await _userManager.FindByNameAsync(dto.UserName);
+            var roles = await _userManager.GetRolesAsync(user);
+
+            if (roles.Contains(Roles.Admin))
+                return RedirectToAction("Index", "Profile", new { area = "Admin" });
+
+            if (roles.Contains(Roles.Writer))
+                return RedirectToAction("Index", "Profile", new { area = "Writer" });
+
+            return RedirectToAction("Index", "Profile", new { area = "Member" });
         }
     }
 }

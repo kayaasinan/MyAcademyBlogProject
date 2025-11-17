@@ -1,5 +1,6 @@
 ﻿using Blogy.Business.DTOs.UserDTOs;
 using Blogy.Entity.Entities;
+using Blogy.WebUI.Consts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,7 +42,8 @@ namespace Blogy.WebUI.Controllers
 
                 return View(model);
             }
-                return RedirectToAction("Index", "Login");
+            await _userManager.AddToRoleAsync(user, Roles.Member);
+            return RedirectToAction("Index", "Login");
         }
     }
 }
