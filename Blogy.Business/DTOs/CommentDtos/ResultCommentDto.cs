@@ -1,6 +1,7 @@
 ﻿using Blogy.Business.DTOs.BlogDtos;
 using Blogy.Business.DTOs.Common;
 using Blogy.Business.DTOs.UserDTOs;
+using Blogy.Entity.Entities;
 
 namespace Blogy.Business.DTOs.CommentDtos
 {
@@ -12,5 +13,6 @@ namespace Blogy.Business.DTOs.CommentDtos
         public int UserId { get; set; }
         public ResultUserDto User { get; set; }
         public DateTime CreatedDate { get; set; }
+        public CommentStatus Status { get; set; }
     }
 }

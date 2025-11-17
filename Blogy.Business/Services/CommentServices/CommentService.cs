@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Blogy.Business.DTOs.BlogDtos;
 using Blogy.Business.DTOs.CommentDtos;
+using Blogy.Business.Services.AIServices;
 using Blogy.DataAccess.Repositories.CommentRepositories;
 using Blogy.Entity.Entities;
 using FluentValidation;
@@ -12,6 +13,7 @@ namespace Blogy.Business.Services.CommentServices
         private readonly ICommentRepository _commentRepository;
         private readonly IMapper _mapper;
         private readonly IValidator<Comment> _validator;
+        private readonly IAIService _aIService;
 
         public CommentService(ICommentRepository commentRepository, IMapper mapper, IValidator<Comment> validator)
         {
@@ -22,12 +24,30 @@ namespace Blogy.Business.Services.CommentServices
 
         public async Task CreateAsync(CreateCommentDto dto)
         {
+         
+            double toxicity = await _aIService.GetToxicityScoreAsync(dto.Content);
+
+            if (toxicity < 0.30)
+                dto.Status = CommentStatus.Accepted;
+
+            else if (toxicity < 0.50)
+                dto.Status = CommentStatus.Review;
+
+            else if (toxicity < 0.80)
+                dto.Status = CommentStatus.Rejected;
+            else
+                dto.Status = CommentStatus.AutoBlocked;
+
+            if (dto.Status == CommentStatus.AutoBlocked)
+                return;
+
             var comment = _mapper.Map<Comment>(dto);
+
             var result = await _validator.ValidateAsync(comment);
+
             if (!result.IsValid)
-            {
                 throw new ValidationException(result.Errors);
-            }
+
             await _commentRepository.CreateAsync(comment);
         }
 

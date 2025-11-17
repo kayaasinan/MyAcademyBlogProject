@@ -1,12 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Blogy.Business.Services.AboutServices;
+using Blogy.Business.Services.AIServices;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Blogy.WebUI.Controllers
 {
-    public class AboutController : Controller
+    public class AboutController(IAboutService _aboutService,IAIService aIService) : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var about = await _aboutService.GetAllAsync();
+            var value = about.FirstOrDefault();
+            return View(value);
+        }
+        public async Task<IActionResult> GenerateAiAbout()
+        {
+            var result = await aIService.GenerateAboutTextAsync();
+            return Json(result);
         }
     }
 }

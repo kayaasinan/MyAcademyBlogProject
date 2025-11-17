@@ -14,3 +14,82 @@
 <script src="~/blogy-1.0.0/js/navbar.js"></script>
 <script src="~/blogy-1.0.0/js/counter.js"></script>
 <script src="~/blogy-1.0.0/js/custom.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script>
+	function openAiAbout() {
+
+		$("#ai-loading").show();
+		$("#ai-result").hide();
+
+		var modal = new bootstrap.Modal(document.getElementById('aiAboutModal'));
+		modal.show();
+
+		fetch('/About/GenerateAiAbout')
+			.then(res => res.json())
+			.then(data => {
+				$("#ai-loading").hide();
+				$("#ai-result").show().html(data.content);
+			});
+	}
+</script>
+<script>
+    const chatBox = document.getElementById("chatBox");
+    const chatInput = document.getElementById("chatInput");
+    const sendBtn = document.getElementById("sendBtn");
+
+    function addMessage(role, text) {
+        const wrap = document.createElement("div");
+        wrap.classList.add("d-flex", role === "user"
+            ? "justify-content-end"
+            : "justify-content-start",
+            "mb-3");
+
+        const bubble = document.createElement("div");
+        bubble.style.maxWidth = "70%";
+
+        if (role === "user") {
+            bubble.classList.add("bg-primary", "text-white", "p-3", "rounded-4", "shadow-sm");
+        } else {
+            bubble.classList.add("bg-white", "p-3", "border", "rounded-4", "shadow-sm");
+        }
+
+        bubble.innerText = text;
+        wrap.appendChild(bubble);
+        chatBox.appendChild(wrap);
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+    window.onload = () => {
+        addMessage("ai", "Merhaba! 👋 Ben Blogy Yapay Zekâ Asistanı. Bana istediğini sorabilirsin.");
+    };
+
+    sendBtn.addEventListener("click", async () => {
+        const msg = chatInput.value.trim();
+        if (!msg) return;
+
+        addMessage("user", msg);
+        chatInput.value = "";
+
+        const res = await fetch('/ContactUs/Index', {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ Body: msg })
+        });
+
+        if (!res.ok) {
+            addMessage("ai", "Bir hata oluştu, lütfen tekrar deneyiniz.");
+            return;
+        }
+
+        const data = await res.json();
+        addMessage("ai", data.aIMessage);
+    });
+
+    chatInput.addEventListener("keypress", e => {
+        if (e.key === "Enter") sendBtn.click();
+    });
+</script>

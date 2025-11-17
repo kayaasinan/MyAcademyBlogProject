@@ -1,4 +1,5 @@
 ﻿using Blogy.Business.Mappings;
+using Blogy.Business.Services.AIServices;
 using Blogy.Business.Validators.CategoryValidator;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -21,7 +22,7 @@ namespace Blogy.Business.Extensions
                 .AsImplementedInterfaces()
                 .WithScopedLifetime();
             });
-
+            services.AddScoped<IAIService, AIService>();
             services.AddAutoMapper(typeof(CategoryMappings).Assembly);
 
             services.AddFluentValidationAutoValidation()

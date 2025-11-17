@@ -1,4 +1,5 @@
-﻿@model ResultBlogDto
+﻿@using Blogy.Entity.Entities
+@model ResultBlogDto
 @{
     ViewData["Title"] = "BlogDetails";
     Layout = "~/Views/UILayout/Index.cshtml";
@@ -55,7 +56,7 @@
                 <div class="pt-5 comment-wrap">
                     <h3 class="mb-5 heading">@Model.Comments.Count Yorum</h3>
                     <ul class="comment-list">
-                        @foreach (var comment in Model.Comments)
+                        @foreach (var comment in Model.Comments.Where(x=>x.Status==CommentStatus.Accepted))
                         {
                             <li class="comment">
                                 <div class="vcard">
@@ -92,7 +93,7 @@
                     {
                         <p class="text-center mt-5">
                             Yorum yapmak için
-                            <a href="/Login/Index" class="text-primary">giriş yap</a>.
+                            <a href="/Login/Index" class="text-primary">giriş yapınız</a>.
                         </p>
                     }
                 </div>

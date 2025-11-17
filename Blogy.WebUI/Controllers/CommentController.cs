@@ -17,6 +17,7 @@ namespace Blogy.WebUI.Controllers
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             dto.UserId = user.Id;
             await _commentService.CreateAsync(dto);
+            TempData["CommentMessage"] = "Yorumunuz işleme alındı.";
             return RedirectToAction("BlogDetails", "Blog", new { id = dto.BlogId });
         }
     }

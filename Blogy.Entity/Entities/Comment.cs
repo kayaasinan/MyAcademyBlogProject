@@ -1,9 +1,4 @@
 ﻿using Blogy.Entity.Entities.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blogy.Entity.Entities
 {
@@ -14,5 +9,13 @@ namespace Blogy.Entity.Entities
         public virtual Blog Blog { get; set; }
         public int UserId { get; set; }
         public virtual AppUser User { get; set; }
+        public CommentStatus Status { get; set; } = CommentStatus.Accepted;
+    }
+    public enum CommentStatus
+    {
+        Accepted = 0,     
+        Review = 1,     
+        Rejected = 2,   
+        AutoBlocked = 3   
     }
 }
