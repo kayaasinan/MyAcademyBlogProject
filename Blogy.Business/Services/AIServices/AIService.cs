@@ -1,6 +1,7 @@
 ﻿using Blogy.Business.DTOs.AIDtos;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using System;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
@@ -9,108 +10,97 @@ namespace Blogy.Business.Services.AIServices
 {
     public class AIService(IConfiguration _configuration) : IAIService
     {
-        public async Task<AIResponseDto> GenerateAboutTextAsync()
+  
+        private async Task<dynamic> SendAsyncBase(string url, object body)
         {
             var apiKey = _configuration["OpenAI:ApiKey"];
-            var url = _configuration["OpenAI:BaseUrl"];
-
-            var request = new AIRequestDto
-            {
-                messages = new List<AIMessageDto>
-                {
-                     new AIMessageDto
-                     {
-                         content = "Blogy hakkında yaklaşık 1000 karakterlik modern, doğal, akıcı bir tanıtım yazısı üret."
-                     }
-                }
-            };
 
             using var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Bearer", apiKey);
 
-            var jsonBody = JsonConvert.SerializeObject(request);
+            var json = JsonConvert.SerializeObject(body);
 
             var response = await client.PostAsync(
                 url,
-                new StringContent(jsonBody, Encoding.UTF8, "application/json")
+                new StringContent(json, Encoding.UTF8, "application/json")
             );
 
-            var json = await response.Content.ReadAsStringAsync();
-
-            dynamic result = JsonConvert.DeserializeObject(json);
-
-            string text = result.choices[0].message.content;
-
-            return new AIResponseDto { content = text };
-
+            var content = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject(content);
         }
-
-        public async Task<AIResponseDto> GenerateReplyAsync(string userMessage)
+        private async Task<dynamic> SendChatAsync(object body)
         {
-            var apiKey = _configuration["OpenAI:ApiKey"];
-            var url = _configuration["OpenAI:BaseUrl"];
-
+            string url = _configuration["OpenAI:ChatUrl"];
+            return await SendAsyncBase(url, body);
+        }
+        private async Task<dynamic> SendModerationAsync(object body)
+        {
+            string url = _configuration["OpenAI:ModerationUrl"];
+            return await SendAsyncBase(url, body);
+        }
+        public async Task<AIResponseDto> GenerateAboutTextAsync()
+        {
             var request = new AIRequestDto
             {
                 messages = new List<AIMessageDto>
             {
                 new AIMessageDto
                 {
-                    content =
-                        "Kullanıcı mesajı: " + userMessage +
-                        "\n\nBu mesaj hangi dilde yazılmışsa, o dilde doğal bir yanıt üret. Sadece yanıtı ver."
+                    role = "user",
+                    content = "Blogy blog sayfası hakkında 1000 karakterlik bir hakkımızda içerikli modern bir metin yaz."
                 }
             }
             };
 
-            using var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", apiKey);
-
-            var jsonBody = JsonConvert.SerializeObject(request);
-
-            var response = await client.PostAsync(url, new StringContent(jsonBody, Encoding.UTF8, "application/json"));
-
-            var json = await response.Content.ReadAsStringAsync();
-
-            dynamic result = JsonConvert.DeserializeObject(json);
-
-            string reply = result.choices[0].message.content;
+            dynamic result = await SendChatAsync(request);
 
             return new AIResponseDto
             {
-                content = reply
+                content = result.choices[0].message.content
+            };
+        }
+
+        public async Task<AIResponseDto> GenerateReplyAsync(string userMessage)
+        {
+            var request = new AIRequestDto
+            {
+                messages = new List<AIMessageDto>
+            {
+                new AIMessageDto
+                {
+                    role = "user",
+                    content = $"Kullanıcı mesajı: {userMessage}"
+                }
+            }
+            };
+
+            dynamic result = await SendChatAsync(request);
+
+            return new AIResponseDto
+            {
+                content = result.choices[0].message.content
             };
         }
 
         public async Task<double> GetToxicityScoreAsync(string text)
         {
-            var apiKey = _configuration["OpenAI:ApiKey"];
-            var url = _configuration["OpenAI:BaseUrl"];
-
-            var body = new
+            var request = new
             {
                 model = "omni-moderation-latest",
                 input = text
             };
 
-            using var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", apiKey);
+            dynamic result = await SendModerationAsync(request);
 
-            var response = await client.PostAsJsonAsync(url, body);
-            var json = await response.Content.ReadAsStringAsync();
+            var scores = result.results[0].category_scores;
 
-            dynamic result = JsonConvert.DeserializeObject(json);
+            double hate = (double?)scores.hate ?? 0;
+            double harassment = (double?)scores.harassment ?? 0;
+            double violence = (double?)scores.violence ?? 0;
+            double threat = (double?)scores.threat ?? 0;
 
-            double score =
-                result.results[0].category_scores.hate ??
-                result.results[0].category_scores.harassment ??
-                result.results[0].category_scores["hate/threatening"] ??
-                0;
-
-            return score;
+            return new[] { hate, harassment, violence, threat }.Max();
         }
     }
 }

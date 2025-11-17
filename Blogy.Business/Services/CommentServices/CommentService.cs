@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Blogy.Business.DTOs.BlogDtos;
 using Blogy.Business.DTOs.CommentDtos;
 using Blogy.Business.Services.AIServices;
 using Blogy.DataAccess.Repositories.CommentRepositories;
@@ -15,11 +14,12 @@ namespace Blogy.Business.Services.CommentServices
         private readonly IValidator<Comment> _validator;
         private readonly IAIService _aIService;
 
-        public CommentService(ICommentRepository commentRepository, IMapper mapper, IValidator<Comment> validator)
+        public CommentService(ICommentRepository commentRepository, IMapper mapper, IValidator<Comment> validator, IAIService aIService)
         {
             _commentRepository = commentRepository;
             _mapper = mapper;
             _validator = validator;
+            _aIService = aIService;
         }
 
         public async Task CreateAsync(CreateCommentDto dto)
@@ -27,13 +27,11 @@ namespace Blogy.Business.Services.CommentServices
          
             double toxicity = await _aIService.GetToxicityScoreAsync(dto.Content);
 
-            if (toxicity < 0.30)
+            if (toxicity < 0.10)
                 dto.Status = CommentStatus.Accepted;
-
-            else if (toxicity < 0.50)
+            else if (toxicity < 0.30)
                 dto.Status = CommentStatus.Review;
-
-            else if (toxicity < 0.80)
+            else if (toxicity < 0.60)
                 dto.Status = CommentStatus.Rejected;
             else
                 dto.Status = CommentStatus.AutoBlocked;

@@ -4,7 +4,12 @@
     ViewData["Title"] = "BlogDetails";
     Layout = "~/Views/UILayout/Index.cshtml";
 }
-
+@if (TempData["CommentMessage"] != null)
+{
+    <div class="alert @TempData["CommentClass"] mt-3">
+        @TempData["CommentMessage"]
+    </div>
+}
 <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('@Model.CoverImage');">
     <div class="container">
         <div class="row same-height justify-content-center">
