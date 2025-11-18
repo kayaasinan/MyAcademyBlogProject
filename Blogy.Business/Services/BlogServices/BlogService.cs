@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Blogy.Business.DTOs.BlogDtos;
+using Blogy.Business.DTOs.ChartDtos;
 using Blogy.DataAccess.Repositories.BlogRepositories;
 using Blogy.Entity.Entities;
 
@@ -7,7 +8,7 @@ namespace Blogy.Business.Services.BlogServices
 {
     public class BlogService : IBlogService
     {
-        private readonly IBlogRepository _blogRepository ;
+        private readonly IBlogRepository _blogRepository;
         private readonly IMapper _mapper;
 
         public BlogService(IBlogRepository blogRepository, IMapper mapper)
@@ -53,7 +54,7 @@ namespace Blogy.Business.Services.BlogServices
 
         public async Task<List<ResultBlogDto>> GetLast3BlogsAsync()
         {
-            var blogs=await _blogRepository.GetLast3BlogsAsync();
+            var blogs = await _blogRepository.GetLast3BlogsAsync();
             return _mapper.Map<List<ResultBlogDto>>(blogs);
         }
 
@@ -67,6 +68,39 @@ namespace Blogy.Business.Services.BlogServices
         {
             var blog = await _blogRepository.GetByIdAsync(id);
             return _mapper.Map<ResultBlogDto>(blog);
+        }
+
+        public async Task<List<CategoryChartDto>> TGetCategoryCountsAsync()
+        {
+            var blogs = await GetAllAsync();
+
+            return blogs.GroupBy(x => x.Category.CategoryName).Select(g => new CategoryChartDto
+            {
+                CategoryName = g.Key,
+                Count = g.Count()
+            }).ToList();
+        }
+
+        public async Task<string> TGetLastWriterNameAsync()
+        {
+            return await _blogRepository.GetLastWriterNameAsync();
+        }
+
+        public async Task<List<StatusChartDto>> TGetStatusCountsAsync()
+        {
+            var blogs = await GetAllAsync();
+
+            return blogs.GroupBy(x => x.Status).Select(x => new StatusChartDto
+            {
+                Status = x.Key switch
+                {
+                    BlogStatus.Pending => "Beklemede",
+                    BlogStatus.Accepted => "Onaylandı",
+                    BlogStatus.Rejected => "Reddedildi",
+                    _ => "Bilinmiyor"
+                },
+                Count = x.Count()
+            }).ToList();
         }
 
         public async Task UpdateAsync(UpdateBlogDto dto)

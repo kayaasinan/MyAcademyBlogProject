@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Blogy.Business.Services.BlogServices;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Blogy.WebUI.ViewComponents.UI_Layout
 {
-    public class _UILayoutFooterComponent : ViewComponent
+    public class _UILayoutFooterComponent(IBlogService _blogService) : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View();
+            var values= await _blogService.GetLast3BlogsAsync();
+            return View(values);
         }
     }
 }

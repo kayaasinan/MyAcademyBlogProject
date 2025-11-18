@@ -26,6 +26,7 @@ namespace Blogy.WebUI.Controllers
         public async Task<IActionResult> BlogDetails(int id)
         {
             var blog = await _blogService.GetSingleByIdAsync(id);
+            ViewBag.name = blog.Writer.FullName;
             return View(blog);
         }
     }

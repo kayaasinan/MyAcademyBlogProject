@@ -26,7 +26,7 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var comments = await _commentService.GetAllAsync();
+            var comments = await _commentService.GetCommentsByAccepted();
             return View(comments);
         }
         public async Task<IActionResult> CreateComment()

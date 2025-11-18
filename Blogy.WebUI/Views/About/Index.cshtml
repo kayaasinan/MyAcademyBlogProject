@@ -45,26 +45,29 @@
 
 
 
-
-
 <div class="modal fade" id="aiAboutModal" tabindex="-1">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
+	<div class="modal-dialog modal-lg modal-dialog-centered">
+		<div class="modal-content shadow-lg border-0 rounded-4" style="overflow:hidden;">
 
-			<div class="modal-header">
-				<h5 class="modal-title">Yapay Zekâ ile Blogy</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+			<div class="modal-header border-0 bg-primary text-white">
+				<h5 class="modal-title fw-bold">🤖 Yapay Zekâ ile Blogy</h5>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
 			</div>
 
-			<div class="modal-body">
-				<div id="ai-loading" class="text-center py-4">
-					<div class="spinner-border text-primary" role="status"></div>
-					<p class="mt-3">Yükleniyor...</p>
+			<div class="modal-body p-4">
+
+				<div id="ai-loading" class="text-center py-5">
+					<div class="spinner-border text-primary" style="width:3rem;height:3rem;"></div>
+					<p class="mt-4 fs-5 text-muted">İçerik oluşturuluyor...</p>
 				</div>
 
-				<div id="ai-result" style="display:none; font-size: 17px; line-height: 1.5;"></div>
-			</div>
+				<div id="ai-result"
+					 class="p-4 bg-light rounded-3 shadow-sm"
+					 style="display:none; font-size:17px; line-height:1.7;">
+				</div>
 
+			</div>
 		</div>
 	</div>
 </div>
+

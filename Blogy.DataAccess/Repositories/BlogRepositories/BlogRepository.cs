@@ -2,11 +2,6 @@
 using Blogy.DataAccess.Repositories.GenericRepositories;
 using Blogy.Entity.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blogy.DataAccess.Repositories.BlogRepositories
 {
@@ -28,12 +23,17 @@ namespace Blogy.DataAccess.Repositories.BlogRepositories
 
         public async Task<List<Blog>> GetLast3BlogsAsync()
         {
-            return await _table.OrderByDescending(x=>x.Id).Take(3).ToListAsync();
+            return await _table.OrderByDescending(x => x.Id).Take(3).ToListAsync();
         }
 
         public async Task<List<Blog>> GetLast5BlogsAsync()
         {
             return await _table.OrderByDescending(x => x.Id).Take(5).ToListAsync();
+        }
+
+        public async Task<string> GetLastWriterNameAsync()
+        {
+            return await _table.OrderByDescending(x => x.Id).Select(x => x.Writer.FirstName + " " + x.Writer.LastName).FirstOrDefaultAsync();
         }
     }
 }

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="row">
+
+    <div class="col-md-8">
+        <div id="categoryChart" style="height:350px;"></div>
+    </div>
+    <div class="col-md-4 mt-4">
+        <div id="statusChart" style="height:300px;"></div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-4 mb-4">
+            <h5 class="fw-semibold mb-2">Son Bloğu Yazan Yazar</h5>
+            <h3 class="text-primary fw-bold">@ViewBag.LastWriter</h3>
+        </div>
+    </div>
+</div>
+
+
+
+

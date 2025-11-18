@@ -1,4 +1,5 @@
 ﻿using Blogy.Business.DTOs.BlogDtos;
+using Blogy.Business.DTOs.ChartDtos;
 
 namespace Blogy.Business.Services.BlogServices
 {
@@ -8,5 +9,8 @@ namespace Blogy.Business.Services.BlogServices
         Task<List<ResultBlogDto>> GetBlogsByCategoryIdAsync(int categoryId);
         Task<List<ResultBlogDto>> GetLast3BlogsAsync();
         Task<List<ResultBlogDto>> GetLast5BlogsAsync();
+        Task<string> TGetLastWriterNameAsync();
+        Task<List<CategoryChartDto>> TGetCategoryCountsAsync();
+        Task<List<StatusChartDto>> TGetStatusCountsAsync();
     }
 }

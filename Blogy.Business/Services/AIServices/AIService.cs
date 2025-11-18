@@ -1,9 +1,7 @@
 ﻿using Blogy.Business.DTOs.AIDtos;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
-using System;
 using System.Net.Http.Headers;
-using System.Net.Http.Json;
 using System.Text;
 
 namespace Blogy.Business.Services.AIServices
@@ -21,10 +19,7 @@ namespace Blogy.Business.Services.AIServices
 
             var json = JsonConvert.SerializeObject(body);
 
-            var response = await client.PostAsync(
-                url,
-                new StringContent(json, Encoding.UTF8, "application/json")
-            );
+            var response = await client.PostAsync(url,new StringContent(json, Encoding.UTF8, "application/json"));
 
             var content = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject(content);

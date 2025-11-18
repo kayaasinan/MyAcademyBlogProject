@@ -4,16 +4,23 @@
 *@
 
 <script src="/Spike-Bootstrap-1.0.0/src/assets/libs/jquery/dist/jquery.min.js"></script>
+
+
 <script src="/Spike-Bootstrap-1.0.0/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script src="/Spike-Bootstrap-1.0.0/src/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+
+
 <script src="/Spike-Bootstrap-1.0.0/src/assets/js/sidebarmenu.js"></script>
 <script src="/Spike-Bootstrap-1.0.0/src/assets/js/app.min.js"></script>
-<script src="/Spike-Bootstrap-1.0.0/src/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
 <script src="/Spike-Bootstrap-1.0.0/src/assets/libs/simplebar/dist/simplebar.js"></script>
 <script src="/Spike-Bootstrap-1.0.0/src/assets/js/dashboard.js"></script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!-- solar icons -->
 <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
 <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 }
@@ -35,4 +42,33 @@
             }
         });
     }
+</script>
+<script>
+    $(document).ready(function () {
+
+        $.get("/Admin/Dashboard/GetCategoryChart", function (data) {
+
+            var names = data.map(x => x.categoryName);
+            var counts = data.map(x => x.count);
+
+            new ApexCharts(document.querySelector("#categoryChart"), {
+                chart: { type: 'bar', height: 350 },
+                series: [{ name: "Blog Sayısı", data: counts }],
+                xaxis: { categories: names }
+            }).render();
+        });
+
+        $.get("/Admin/Dashboard/GetStatusChart", function (data) {
+
+            var labels = data.map(x => x.status);
+            var values = data.map(x => x.count);
+
+            new ApexCharts(document.querySelector("#statusChart"), {
+                chart: { type: 'donut', height: 300 },
+                labels: labels,
+                series: values
+            }).render();
+        });
+
+    });
 </script>

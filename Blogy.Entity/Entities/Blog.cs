@@ -23,5 +23,12 @@ namespace Blogy.Entity.Entities
         public int WriterId { get; set; }
         public virtual AppUser Writer { get; set; }
         public virtual IList<Comment> Comments { get; set; }
+        public BlogStatus Status { get; set; } = BlogStatus.Pending;
+    }
+    public enum BlogStatus
+    {
+        Pending = 0,
+        Accepted = 1,
+        Rejected = 2
     }
 }
