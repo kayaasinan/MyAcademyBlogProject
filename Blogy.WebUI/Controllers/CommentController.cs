@@ -17,7 +17,26 @@ namespace Blogy.WebUI.Controllers
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             dto.UserId = user.Id;
             await _commentService.CreateAsync(dto);
-            TempData["CommentMessage"] = "Yorumunuz işleme alındı.";
+            if (dto.Status == CommentStatus.AutoBlocked)
+            {
+                TempData["CommentMessage"] = "Bu yorum uygunsuz içerik içerdiği için engellendi.";
+                TempData["CommentClass"] = "alert-danger";
+            }
+            else if (dto.Status == CommentStatus.Review)
+            {
+                TempData["CommentMessage"] = "Yorumunuz kontrol için işleme alındı.";
+                TempData["CommentClass"] = "alert-warning";
+            }
+            else if (dto.Status == CommentStatus.Rejected)
+            {
+                TempData["CommentMessage"] = "Yorumunuz uygun bulunmadı ve reddedildi.";
+                TempData["CommentClass"] = "alert-danger";
+            }
+            else
+            {
+                TempData["CommentMessage"] = "Yorum başarıyla eklendi!";
+                TempData["CommentClass"] = "alert-success";
+            }
             return RedirectToAction("BlogDetails", "Blog", new { id = dto.BlogId });
         }
     }

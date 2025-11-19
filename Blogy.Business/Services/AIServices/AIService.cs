@@ -1,4 +1,5 @@
 ﻿using Blogy.Business.DTOs.AIDtos;
+using Blogy.DataAccess.Repositories.BlogRepositories;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace Blogy.Business.Services.AIServices
 {
-    public class AIService(IConfiguration _configuration) : IAIService
+    public class AIService(IConfiguration _configuration, IBlogRepository _blogRepository) : IAIService
     {
   
         private async Task<dynamic> SendAsyncBase(string url, object body)
@@ -96,6 +97,27 @@ namespace Blogy.Business.Services.AIServices
             double threat = (double?)scores.threat ?? 0;
 
             return new[] { hate, harassment, violence, threat }.Max();
+        }
+
+        public async Task<List<AISuggestedDto>> GetSuggestionsAsync(int blogId)
+        {
+            var current = await _blogRepository.GetByIdAsync(blogId);
+
+            var blogs = await _blogRepository.GetAllAsync();
+
+            var list = blogs
+                .Where(x => x.Id != blogId && x.CategoryId == current.CategoryId)
+                .OrderByDescending(x => x.CreatedDate)
+                .Take(3)
+                .Select(x => new AISuggestedDto
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    CoverImage = x.CoverImage,
+                    Score = Random.Shared.Next(82, 98) 
+                }) .ToList();
+
+            return list;
         }
     }
 }

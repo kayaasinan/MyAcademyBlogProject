@@ -8,5 +8,6 @@ namespace Blogy.Business.Services.AIServices
         Task<AIResponseDto> GenerateAboutTextAsync();
         Task<AIResponseDto> GenerateReplyAsync(string userMessage);
         Task<double> GetToxicityScoreAsync(string text);
+        Task<List<AISuggestedDto>> GetSuggestionsAsync(int blogId);
     }
 }

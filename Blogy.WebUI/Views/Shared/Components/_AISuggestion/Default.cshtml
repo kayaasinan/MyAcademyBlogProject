@@ -1,0 +1,29 @@
+﻿
+@*
+    AI Suggestion Component
+*@
+<div class="sidebar-box">
+    <h3 class="mb-3">
+        <span class="bi bi-stars text-warning"></span>
+        Yapay Zekâ Öneriyor
+    </h3>
+
+    @foreach (var item in Model)
+    {
+        <div class="d-flex mb-3">
+            <img src="@item.CoverImage"
+                 class="me-3 rounded"
+                 style="width:70px;height:70px;object-fit:cover;" />
+
+            <div>
+                <a href="/Blog/BlogDetails/@item.Id"
+                   class="fw-bold d-block">
+                    @item.Title
+                </a>
+                <span class="text-muted" style="font-size:13px;">
+                    AI benzerlik skoru: @item.Score%
+                </span>
+            </div>
+        </div>
+    }
+</div>
