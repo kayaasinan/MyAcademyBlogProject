@@ -1,5 +1,6 @@
 ﻿using Blogy.Business.DTOs.BlogDtos;
 using Blogy.Business.DTOs.ChartDtos;
+using Blogy.Entity.Entities;
 
 namespace Blogy.Business.Services.BlogServices
 {
@@ -16,5 +17,6 @@ namespace Blogy.Business.Services.BlogServices
         Task<List<ResultBlogDto>> TGetBlogsByWriterIdAsync(int writerId);
         Task<int> TGetTotalBlogCountAsync();
         Task<ResultBlogDto> TGetMostCommentedBlogAsync();
+        Task ChangeBlogStatusAsync(int id, BlogStatus newStatus);
     }
 }

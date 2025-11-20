@@ -131,5 +131,10 @@ namespace Blogy.Business.Services.BlogServices
             var blogs = await _blogRepository.GetLast4BlogsAsync();
             return _mapper.Map<List<ResultBlogDto>>(blogs);
         }
+
+        public async Task ChangeBlogStatusAsync(int id, BlogStatus newStatus)
+        {
+            await _blogRepository.ChangeBlogStatusAsync(id, newStatus);
+        }
     }
 }

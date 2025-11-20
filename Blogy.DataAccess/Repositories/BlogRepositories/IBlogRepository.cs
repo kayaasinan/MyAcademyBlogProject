@@ -14,6 +14,7 @@ namespace Blogy.DataAccess.Repositories.BlogRepositories
         Task<List<Blog>> GetBlogsByWriterIdAsync(int writerId);
         Task<int> GetTotalBlogCountAsync();
         Task<Blog> GetMostCommentedBlogAsync();
+        Task ChangeBlogStatusAsync(int id, BlogStatus newStatus);
 
     }
 }

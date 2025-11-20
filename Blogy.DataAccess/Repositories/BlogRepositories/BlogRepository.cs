@@ -11,6 +11,16 @@ namespace Blogy.DataAccess.Repositories.BlogRepositories
         {
         }
 
+        public async Task ChangeBlogStatusAsync(int id, BlogStatus newStatus)
+        {
+            var blog = await _table.FindAsync(id);
+            if (blog is not null)
+            {
+                blog.Status = newStatus;
+                await _context.SaveChangesAsync();
+            }
+        }
+
         public async Task<List<Blog>> GetBlogsByCategoryIdAsync(int categoryId)
         {
             return await _table.Where(x => x.CategoryId == categoryId).Include(x => x.Category).ToListAsync();

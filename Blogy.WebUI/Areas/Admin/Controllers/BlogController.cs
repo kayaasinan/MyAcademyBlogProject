@@ -74,5 +74,11 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
             await _blogService.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
+        [HttpPost]
+        public async Task<IActionResult> ChangeStatus(int id, BlogStatus newStatus)
+        {
+            await _blogService.ChangeBlogStatusAsync(id, newStatus);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

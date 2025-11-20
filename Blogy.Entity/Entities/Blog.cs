@@ -1,6 +1,7 @@
 ﻿using Blogy.Entity.Entities.Common;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,8 +28,13 @@ namespace Blogy.Entity.Entities
     }
     public enum BlogStatus
     {
+        [Display(Name = "Beklemede")]
         Pending = 0,
+
+        [Display(Name = "Onaylandı")]
         Accepted = 1,
+
+        [Display(Name = "Reddedildi")]
         Rejected = 2
     }
 }

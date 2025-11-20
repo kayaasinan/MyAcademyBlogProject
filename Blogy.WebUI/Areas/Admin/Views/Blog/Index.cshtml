@@ -21,6 +21,7 @@
                                 <th>Blog Başlığı</th>
                                 <th>Açıklama</th>
                                 <th>Kategori</th>
+                                <th>Durumu</th>
                                 <th style="text-align: center">Sil</th>
                                 <th style="text-align: center">Güncelle</th>
                             </tr>
@@ -28,8 +29,15 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
+                                string statusClass = item.Status switch
+                                {
+                                    BlogStatus.Accepted => "badge bg-success",
+                                    BlogStatus.Pending => "badge bg-warning text-dark",
+                                    BlogStatus.Rejected => "badge bg-danger",
+                                    _ => "badge bg-secondary"
+                                };
                                 count++;
-                                <tr>
+                                <tr class="align-middle">
                                     <th>@count</th>
                                     <td>
                                         <img src="@item.CoverImage" style="height:75px;width:75px" />
@@ -37,6 +45,36 @@
                                     </td>
                                     <td>@(item.Description?.Length > 100 ? item.Description.Substring(0, 25) + "..." : item.Description)</td>
                                     <td>@item.Category.CategoryName</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+
+                                            <span class="@statusClass">
+                                                <i class="bi bi-circle-fill me-1"></i> @item.Status.GetDisplayName()
+                                            </span>
+
+                                            <form asp-action="ChangeStatus" method="post" class="d-flex align-items-center gap-2">
+                                                <input type="hidden" name="id" value="@item.Id" />
+
+                                                <select name="newStatus" class="form-select form-select-sm w-auto">
+                                                    @foreach (var status in Enum.GetValues(typeof(BlogStatus)).Cast<BlogStatus>())
+                                                    {
+                                                        var isSelected = item.Status == status;
+                                                        <option value="@((int)status)" selected="@(isSelected ? "selected" : null)">
+                                                            @status.GetDisplayName()
+                                                        </option>
+                                                    }
+                                                </select>
+
+                                                <button type="submit" class="btn btn-sm btn-primary">
+                                                    <i class="bi bi-arrow-repeat"></i>
+                                                </button>
+                                            </form>
+
+                                        </div>
+                                    </td>
+
+
+
                                     <td class="text-center">
                                         <button type="button" onclick="confirmDelete('/Admin/Blog/DeleteBlog/@item.Id')" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                     </td>
