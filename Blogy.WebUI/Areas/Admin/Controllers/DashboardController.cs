@@ -9,8 +9,11 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
     {
         public async Task<IActionResult> Index()
         {
-            var writer = await _blogService.TGetLastWriterNameAsync();
-            ViewBag.LastWriter = writer;
+            ViewBag.LastWriter = await _blogService.TGetLastWriterNameAsync();
+            ViewBag.TotalBlogs = await _blogService.TGetTotalBlogCountAsync();
+            var mostCommented = await _blogService.TGetMostCommentedBlogAsync();
+            ViewBag.MostCommentedTitle = mostCommented?.Title ?? "Henüz yorum yok";
+            ViewBag.MostCommentedCount = mostCommented?.Comments.Count ?? 0;
             return View();
         }
         public async Task<IActionResult> GetStatusChart()

@@ -39,9 +39,14 @@ namespace Blogy.WebUI.Controllers
                 return RedirectToAction("Index", "Profile", new { area = "Admin" });
 
             if (roles.Contains(Roles.Writer))
-                return RedirectToAction("Index", "Profile", new { area = "Writer" });
+                return RedirectToAction("Index", "WriterProfile", new { area = "Writer" });
 
-            return RedirectToAction("Index", "Profile", new { area = "Member" });
+            return RedirectToAction("Index", "MemberProfile", new { area = "Member" });
+        }
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Default");
         }
     }
 }

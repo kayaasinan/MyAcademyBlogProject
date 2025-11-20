@@ -70,6 +70,17 @@ namespace Blogy.Business.Services.BlogServices
             return _mapper.Map<ResultBlogDto>(blog);
         }
 
+        public async Task<int> TGetTotalBlogCountAsync()
+        {
+            return await _blogRepository.GetTotalBlogCountAsync();
+        }
+
+        public async Task<List<ResultBlogDto>> TGetBlogsByWriterIdAsync(int writerId)
+        {
+            var blogs = await _blogRepository.GetBlogsByWriterIdAsync(writerId);
+            return _mapper.Map<List<ResultBlogDto>>(blogs);
+        }
+
         public async Task<List<CategoryChartDto>> TGetCategoryCountsAsync()
         {
             var blogs = await GetAllAsync();
@@ -107,6 +118,18 @@ namespace Blogy.Business.Services.BlogServices
         {
             var blog = _mapper.Map<Blog>(dto);
             await _blogRepository.UpdateAsync(blog);
+        }
+
+        public async Task<ResultBlogDto> TGetMostCommentedBlogAsync()
+        {
+            var blog = await _blogRepository.GetMostCommentedBlogAsync();
+            return _mapper.Map<ResultBlogDto>(blog);
+        }
+
+        public async Task<List<ResultBlogDto>> GetLast4BlogsAsync()
+        {
+            var blogs = await _blogRepository.GetLast4BlogsAsync();
+            return _mapper.Map<List<ResultBlogDto>>(blogs);
         }
     }
 }

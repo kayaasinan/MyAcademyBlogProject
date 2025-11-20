@@ -8,9 +8,13 @@ namespace Blogy.Business.Services.BlogServices
         Task<List<ResultBlogDto>> GetBlogsWithCategoriesAsync();
         Task<List<ResultBlogDto>> GetBlogsByCategoryIdAsync(int categoryId);
         Task<List<ResultBlogDto>> GetLast3BlogsAsync();
+        Task<List<ResultBlogDto>> GetLast4BlogsAsync();
         Task<List<ResultBlogDto>> GetLast5BlogsAsync();
         Task<string> TGetLastWriterNameAsync();
         Task<List<CategoryChartDto>> TGetCategoryCountsAsync();
         Task<List<StatusChartDto>> TGetStatusCountsAsync();
+        Task<List<ResultBlogDto>> TGetBlogsByWriterIdAsync(int writerId);
+        Task<int> TGetTotalBlogCountAsync();
+        Task<ResultBlogDto> TGetMostCommentedBlogAsync();
     }
 }
