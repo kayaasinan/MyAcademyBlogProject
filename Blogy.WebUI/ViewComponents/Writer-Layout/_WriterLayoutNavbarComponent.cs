@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace Blogy.WebUI.ViewComponents.Admin_Layout
+namespace Blogy.WebUI.ViewComponents.Writer_Layout
 {
-    public class _AdminLayoutHeaderComponent(UserManager<AppUser> _userManager) : ViewComponent
+    public class _WriterLayoutNavbarComponent(UserManager<AppUser> _userManager) : ViewComponent
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {

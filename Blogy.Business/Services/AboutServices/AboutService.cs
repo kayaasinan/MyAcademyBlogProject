@@ -20,13 +20,13 @@ namespace Blogy.Business.Services.AboutServices
 
         public async Task<List<ResultAboutDto>> GetAllAsync()
         {
-            var abouts =await _aboutRepository.GetAllAsync();
+            var abouts = await _aboutRepository.GetAllAsync();
             return _mapper.Map<List<ResultAboutDto>>(abouts);
         }
 
         public async Task<UpdateAboutDto> GetByIdAsync(int id)
         {
-            var about=await _aboutRepository.GetByIdAsync(id);
+            var about = await _aboutRepository.GetByIdAsync(id);
             return _mapper.Map<UpdateAboutDto>(about);
         }
 

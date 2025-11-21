@@ -6,6 +6,7 @@ namespace Blogy.Business.DTOs.TagDtos
     public class ResultTagDto : BaseDto
     {
         public string Name { get; set; }
+        public string TagColor { get; set; }
 
      
     }
