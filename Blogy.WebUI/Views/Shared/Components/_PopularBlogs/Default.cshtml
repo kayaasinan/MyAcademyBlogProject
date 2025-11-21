@@ -2,22 +2,26 @@
 @*
     Popular Blogs Component
 *@
-<section class="section posts-entry posts-entry-sm bg-light">
-	<div class="container">
-		<div class="row">
-			@foreach (var item in Model)
-			{
-				<div class="col-md-6 col-lg-3">
-					<div class="blog-entry">
-						<a href="single.html" class="img-link">
-							<img src="@item.CoverImage" style="width:290px; height:160px;" alt="Image" class="img-fluid">
-						</a>
-						<span class="date">@item.CreatedDate</span>
-						<h3><a href="single.html">@item.Title</a></h3>
-					</div>
-				</div>
-			}
-		
-		</div>
-	</div>
+<section class="mt-4">
+    <h4 class="fw-bold mb-3">Popüler Bloglar</h4>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="popular-card">
+                    <img src="@item.CoverImage" class="popular-img" />
+
+                    <div class="p-3">
+                        <span class="popular-date">@item.CreatedDate.ToShortDateString()</span>
+
+                        <div class="popular-title">
+                            @(item.Title.Length > 40 ? item.Title.Substring(0, 40) + "..." : item.Title)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </section>
+

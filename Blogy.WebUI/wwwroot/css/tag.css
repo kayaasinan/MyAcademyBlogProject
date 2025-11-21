@@ -1,0 +1,38 @@
+﻿.tags-card {
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    padding: 0 !important;
+}
+
+.tags-header {
+    background: linear-gradient(135deg, #16a085, #2980b9);
+    padding: 22px;
+    border-radius: 20px 20px 0 0;
+    color: white;
+    margin-bottom: 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.tags-wrapper {
+    padding: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tag-item {
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: .25s ease;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.12);
+}
+
+    .tag-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+    }

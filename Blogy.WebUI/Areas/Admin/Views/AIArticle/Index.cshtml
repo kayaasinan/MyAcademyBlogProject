@@ -3,38 +3,51 @@
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
 }
-<div class="card shadow p-4">
-    <h4 class="fw-bold mb-3">AI ile Blog Yazısı Oluştur</h4>
 
-    <form method="post">
-        <div class="mb-3">
-            <label class="form-label fw-semibold">Anahtar Kelime</label>
-            <input type="text" asp-for="Keyword" class="form-control" required />
-        </div>
+<div class="ai-card mb-4">
 
-        <div class="mb-3">
-            <label class="form-label fw-semibold">Konu Açıklaması</label>
-            <textarea asp-for="Description" rows="3" class="form-control" required></textarea>
-        </div>
+    <div class="ai-header">
+        <i class="bi bi-magic me-2"></i> AI ile Blog Yazısı Oluştur
+    </div>
 
-        <button class="btn btn-primary w-100 fw-bold py-2">Oluştur</button>
-    </form>
+    <div class="ai-body">
+        <form method="post">
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Anahtar Kelime</label>
+                <input type="text" asp-for="Keyword" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Konu Açıklaması</label>
+                <textarea asp-for="Description" rows="3" class="form-control" required></textarea>
+            </div>
+
+            <button class="btn btn-primary w-100 fw-bold py-2">
+                <i class="bi bi-stars me-1"></i> Oluştur
+            </button>
+
+        </form>
+    </div>
+
 </div>
 
 @if (ViewBag.Article != null)
 {
-    <div class="card shadow p-4 mt-4">
-        <div class="d-flex justify-content-between">
-            <h5 class="fw-bold">Oluşturulan Blog Yazısı</h5>
+    <div class="ai-card ai-result-card">
 
-            <button class="btn btn-outline-secondary" onclick="copyBlog()">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="fw-bold mb-0">
+                <i class="bi bi-journals me-2"></i> Oluşturulan Blog Yazısı
+            </h5>
+
+            <button class="btn btn-outline-dark ai-copy-btn" onclick="copyBlog()">
                 <i class="bi bi-clipboard"></i> Kopyala
             </button>
         </div>
 
-        <div id="blogText" style="white-space: pre-line; font-size:17px; line-height:1.7;" class="mt-3">
+        <div id="blogText" class="ai-output">
             @ViewBag.Article
         </div>
     </div>
 }
-

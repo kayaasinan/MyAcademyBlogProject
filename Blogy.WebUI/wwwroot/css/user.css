@@ -1,0 +1,48 @@
+﻿.user-card {
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+    padding: 0 !important;
+}
+
+.user-header {
+    background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+    padding: 22px;
+    border-radius: 20px 20px 0 0;
+    color: white;
+    margin-bottom: 0;
+    box-shadow: 0 7px 18px rgba(0,0,0,0.15);
+}
+
+.user-table {
+    padding: 22px;
+}
+
+    .user-table table tbody tr {
+        background: #fff;
+        border-bottom: 10px solid #f3f4f6;
+        transition: .25s ease;
+    }
+
+        .user-table table tbody tr:hover {
+            background: #f9fafb;
+            transform: scale(1.01);
+        }
+
+.user-img {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+
+.btn-small {
+    padding: 7px 14px;
+    border-radius: 12px;
+    transition: .3s ease;
+}
+
+    .btn-small:hover {
+        transform: scale(1.1);
+    }

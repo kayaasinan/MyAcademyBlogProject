@@ -4,37 +4,57 @@
     Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
 }
 
-@{
-    ViewData["Title"] = "Dashboard";
-}
+
+<div class="dashboard-header mb-4">
+    <h4 class="fw-bold mb-0">
+        <i class="bi bi-speedometer2 me-2"></i> Dashboard
+    </h4>
+</div>
 
 <div class="row">
 
-    <div class="col-md-8">
-        <div id="categoryChart" style="height:350px;"></div>
-    </div>
-    <div class="col-md-4 mt-4">
-        <div id="statusChart" style="height:300px;"></div>
-    </div>
-    <div class="col-md-4">
-        <div class="card p-4 mb-4">
-            <h5 class="fw-semibold mb-2">Son Bloğu Yazan Yazar</h5>
-            <h3 class="text-primary fw-bold">@ViewBag.LastWriter</h3>
+   
+    <div class="col-md-8 mb-4">
+        <div class="dashboard-card p-3">
+            <h5 class="fw-bold mb-3">Kategori Dağılımı</h5>
+            <div id="categoryChart" style="height:350px;"></div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="card p-4 mb-4">
-            <h5 class="fw-semibold mb-2">Toplam Blog Sayısı</h5>
-            <h3 class="text-success fw-bold">@ViewBag.TotalBlogs</h3>
+
+ 
+    <div class="col-md-4 mb-4">
+        <div class="dashboard-card p-3">
+            <h5 class="fw-bold mb-3">Blog Durumları</h5>
+            <div id="statusChart" style="height:300px;"></div>
         </div>
     </div>
+
+  
     <div class="col-md-4">
-        <div class="card p-4 mb-4">
-            <h5 class="fw-semibold mb-2">En Çok Yorum Alan Blog</h5>
-            <h4 class="fw-bold text-danger">@ViewBag.MostCommentedTitle (@ViewBag.MostCommentedCount)</h4>
+        <div class="dashboard-card p-4 mb-4 bg-white">
+            <h5 class="dashboard-title">Son Bloğu Yazan Yazar</h5>
+            <h3 class="dashboard-value text-primary">@ViewBag.LastWriter</h3>
+        </div>
+    </div>
+
+ 
+    <div class="col-md-4">
+        <div class="dashboard-card p-4 mb-4 bg-white">
+            <h5 class="dashboard-title">Toplam Blog Sayısı</h5>
+            <h3 class="dashboard-value text-success">@ViewBag.TotalBlogs</h3>
+        </div>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="dashboard-card p-4 mb-4 bg-white">
+            <h5 class="dashboard-title">En Çok Yorum Alan Blog</h5>
+            <h4 class="dashboard-value text-danger">@ViewBag.MostCommentedTitle (@ViewBag.MostCommentedCount)</h4>
         </div>
     </div>
 </div>
+
+
 @await Component.InvokeAsync("_PopularBlogs")
 
 

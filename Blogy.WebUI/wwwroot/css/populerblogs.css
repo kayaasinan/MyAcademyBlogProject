@@ -1,0 +1,33 @@
+﻿.popular-card {
+    border-radius: 16px;
+    border: none;
+    overflow: hidden;
+    transition: .25s ease;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+    .popular-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 14px 30px rgba(0,0,0,0.15);
+    }
+
+.popular-img {
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.popular-date {
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+.popular-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+    margin-top: 6px;
+    line-height: 1.4;
+}

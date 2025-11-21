@@ -57,26 +57,4 @@
 </div>
 
 
-<script>
-    document.getElementById("newPassword").addEventListener("input", function () {
-        var val = this.value.length;
-        var bar = document.getElementById('passwordStrength');
 
-        if (val === 0) {
-            bar.style.width = "0%";
-            bar.className = "progress-bar";
-        }
-        else if (val < 4) {
-            bar.style.width = "25%";
-            bar.className = "progress-bar bg-danger";
-        }
-        else if (val < 7) {
-            bar.style.width = "55%";
-            bar.className = "progress-bar bg-warning";
-        }
-        else {
-            bar.style.width = "100%";
-            bar.className = "progress-bar bg-success";
-        }
-    });
-</script>
