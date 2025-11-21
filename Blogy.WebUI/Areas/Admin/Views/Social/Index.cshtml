@@ -14,15 +14,23 @@
 
         @foreach (var item in Model)
         {
-            <a href="@item.Url" target="_blank" style="text-decoration:none;">
-                <div class="glass-card text-center">
-                    <i class="@item.Icon social-icon"></i>
-
-                    <div class="social-name">@item.Name</div>
-
-                    <div class="social-url mt-2">@item.Url</div>
+            <div class="glass-wrapper">
+                <div class="edit-icon">
+                    <a href="/Admin/Social/UpdateSocial/@item.Id">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
                 </div>
-            </a>
+
+                <a href="@item.Url" target="_blank" style="text-decoration:none;">
+                    <div class="glass-card text-center">
+                        <i class="@item.Icon social-icon"></i>
+
+                        <div class="social-name">@item.Name</div>
+
+                        <div class="social-url mt-2">@item.Url</div>
+                    </div>
+                </a>
+            </div>
         }
 
     </div>

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Blogy.Business.DTOs.BlogDtos;
 using Blogy.Business.DTOs.SocialDtos;
 using Blogy.DataAccess.Repositories.SocialRepositories;
 using Blogy.Entity.Entities;
@@ -24,9 +25,10 @@ namespace Blogy.Business.Services.SocialServices
             return _mapper.Map<List<ResultSocialDto>>(socials);
         }
 
-        public Task<UpdateSocialDto> GetByIdAsync(int id)
+        public async Task<UpdateSocialDto> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var social = await _socialRepository.GetByIdAsync(id);
+            return _mapper.Map<UpdateSocialDto>(social);
         }
 
         public Task<ResultSocialDto> GetSingleByIdAsync(int id)
@@ -34,9 +36,10 @@ namespace Blogy.Business.Services.SocialServices
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(UpdateSocialDto dto)
+        public async Task UpdateAsync(UpdateSocialDto dto)
         {
-            throw new NotImplementedException();
+            var social = _mapper.Map<Social>(dto);
+            await _socialRepository.UpdateAsync(social);
         }
     }
 }

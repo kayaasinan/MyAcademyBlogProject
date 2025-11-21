@@ -32,16 +32,7 @@ namespace Blogy.WebUI.Controllers
                 ModelState.AddModelError(string.Empty, "Kullanıcı adı veya şifre hatalı");
                 return View(dto);
             }
-            var user = await _userManager.FindByNameAsync(dto.UserName);
-            var roles = await _userManager.GetRolesAsync(user);
-
-            if (roles.Contains(Roles.Admin))
-                return RedirectToAction("Index", "Profile", new { area = "Admin" });
-
-            if (roles.Contains(Roles.Writer))
-                return RedirectToAction("Index", "WriterProfile", new { area = "Writer" });
-
-            return RedirectToAction("Index", "MemberProfile", new { area = "Member" });
+            return RedirectToAction("Index", "Default");
         }
         public async Task<IActionResult> Logout()
         {
