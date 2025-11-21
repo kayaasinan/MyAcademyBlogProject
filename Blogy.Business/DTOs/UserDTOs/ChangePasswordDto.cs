@@ -9,10 +9,10 @@ namespace Blogy.Business.DTOs.UserDTOs
 {
     public class ChangePasswordDto
     {
-        public string CurrentPassword { get; set; }
-        public string NewPassword { get; set; }
+        public string? CurrentPassword { get; set; }
+        public string? NewPassword { get; set; }
 
         [Compare(nameof(NewPassword), ErrorMessage = "Şifreler birbiri ile uyumlu değil..!")]
-        public string ConfirmPassword { get; set; }
+        public string? ConfirmPassword { get; set; }
     }
 }

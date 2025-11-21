@@ -11,17 +11,7 @@
                     <h3 class="mb-4">Hakkımızda</h3>
                     <p>Uzak değil, tam burada… Kelimelerin bir araya gelerek yeni fikirler, ilham veren düşünceler ve keyifli içerikler oluşturduğu bir dünyadayız. Amacımız; okurlarımıza sade, anlaşılır ve değer katan yazılar sunmak. Burada her satır bir yolculuk, her paragraf yeni bir keşif.</p>
                 </div>
-                <div class="widget">
-                    <h3>Sosyal Medya</h3>
-                    <ul class="list-unstyled social">
-                        <li><a href="#"><span class="icon-instagram"></span></a></li>
-                        <li><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li><a href="#"><span class="icon-facebook"></span></a></li>
-                        <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                        <li><a href="#"><span class="icon-pinterest"></span></a></li>
-                        <li><a href="#"><span class="icon-dribbble"></span></a></li>
-                    </ul>
-                </div>
+                @await Component.InvokeAsync("_UILayoutSocialComponent")
             </div>
             <div class="col-lg-4 ps-lg-5">
                 <div class="widget">

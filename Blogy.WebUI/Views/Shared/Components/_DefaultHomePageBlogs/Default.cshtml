@@ -1,64 +1,62 @@
-﻿@*
+﻿@model List<ResultBlogDto>
+@*
      Default Index Home Page Blogs Component
 *@
-@model List<ResultBlogDto>
+
+
 
 <section class="section bg-light">
     <div class="container">
         <div class="row align-items-stretch retro-layout">
 
             <div class="col-md-4">
-                @for (int i = 0; i < 2 && i < Model.Count; i++)
-                {
-                    <a href="/Blog/BlogDetails/@Model[i].Id"
-                       class="h-entry mb-30 v-height gradient">
 
-                        <div class="featured-img"
-                             style="background-image: url('@Model[i].CoverImage'); width:100%; height:220px;">
-                        </div>
+                <a href="/Blog/BlogDetails/@Model[0].Id" class="h-entry mb-30 v-height gradient">
+                    <div class="featured-img" style="background-image: url('@Model[0].CoverImage');"></div>
+                    <div class="text">
+                        <span class="date">@Model[0].CreatedDate.ToShortDateString()</span>
+                        <h2>@Model[0].Title</h2>
+                    </div>
+                </a>
 
-                        <div class="text">
-                            <span class="date">@Model[i].CreatedDate.ToShortDateString()</span>
-                            <h2>@Model[i].Title</h2>
-                        </div>
-                    </a>
-                }
+                <a href="/Blog/BlogDetails/@Model[1].Id" class="h-entry v-height gradient">
+                    <div class="featured-img" style="background-image: url('@Model[1].CoverImage');"></div>
+                    <div class="text">
+                        <span class="date">@Model[1].CreatedDate.ToShortDateString()</span>
+                        <h2>@Model[1].Title</h2>
+                    </div>
+                </a>
+
             </div>
-
             <div class="col-md-4">
-                @if (Model.Count >= 3)
-                {
-                    <a href="/Blog/BlogDetails/@Model[2].Id"
-                       class="h-entry img-5 h-100 gradient">
 
-                        <div class="featured-img"
-                             style="background-image: url('@Model[2].CoverImage'); width:100%; height:450px;">
-                        </div>
+                <a href="/Blog/BlogDetails/@Model[2].Id" class="h-entry img-5 h-100 gradient">
+                    <div class="featured-img" style="background-image: url('@Model[2].CoverImage');"></div>
+                    <div class="text">
+                        <span class="date">@Model[2].CreatedDate.ToShortDateString()</span>
+                        <h2>@Model[2].Title</h2>
+                    </div>
+                </a>
 
-                        <div class="text">
-                            <span class="date">@Model[2].CreatedDate.ToShortDateString()</span>
-                            <h2>@Model[2].Title</h2>
-                        </div>
-                    </a>
-                }
             </div>
-
             <div class="col-md-4">
-                @for (int i = 3; i < 5 && i < Model.Count; i++)
-                {
-                    <a href="/Blog/BlogDetails/@Model[i].Id"
-                       class="h-entry mb-30 v-height gradient">
 
-                        <div class="featured-img"
-                             style="background-image: url('@Model[i].CoverImage');width:100%; height:220px;">
-                        </div>
+                <a href="/Blog/BlogDetails/@Model[3].Id" class="h-entry mb-30 v-height gradient">
+                    <div class="featured-img" style="background-image: url('@Model[3].CoverImage');"></div>
+                    <div class="text">
+                        <span class="date">@Model[3].CreatedDate.ToShortDateString()</span>
+                        <h2>@Model[3].Title</h2>
+                    </div>
+                </a>
 
-                        <div class="text">
-                            <span class="date">@Model[i].CreatedDate.ToShortDateString()</span>
-                            <h2>@Model[i].Title</h2>
-                        </div>
-                    </a>
-                }
+                <a href="/Blog/BlogDetails/@Model[4].Id" class="h-entry v-height gradient">
+                    <div class="featured-img" style="background-image: url('@Model[4].CoverImage');"></div>
+                    <div class="text">
+                        <span class="date">@Model[4].CreatedDate.ToShortDateString()</span>
+                        <h2>@Model[4].Title</h2>
+                    </div>
+                </a>
+
             </div>
 
         </div>
