@@ -9,7 +9,7 @@ namespace Blogy.Business.Services.AIServices
 {
     public class AIService(IConfiguration _configuration, IBlogRepository _blogRepository) : IAIService
     {
-  
+
         private async Task<dynamic> SendAsyncBase(string url, object body)
         {
             var apiKey = _configuration["OpenAI:ApiKey"];
@@ -20,7 +20,7 @@ namespace Blogy.Business.Services.AIServices
 
             var json = JsonConvert.SerializeObject(body);
 
-            var response = await client.PostAsync(url,new StringContent(json, Encoding.UTF8, "application/json"));
+            var response = await client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
 
             var content = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject(content);
@@ -114,10 +114,37 @@ namespace Blogy.Business.Services.AIServices
                     Id = x.Id,
                     Title = x.Title,
                     CoverImage = x.CoverImage,
-                    Score = Random.Shared.Next(82, 98) 
-                }) .ToList();
+                    Score = Random.Shared.Next(82, 98)
+                }).ToList();
 
             return list;
+        }
+
+        public async Task<AIResponseDto> GenerateArticleAsync(AIArticleDto dto)
+        {
+            var request = new AIRequestDto
+            {
+                messages = new List<AIMessageDto>
+                {
+                   new AIMessageDto
+                   {
+                        role = "user",
+                        content = $"Aşağıdaki bilgilerle yaklaşık 1000 kelimelik, modern ve akıcı, düz paragraf formatında profesyonel bir blog yazısı üret.\n\n" +
+                          $"Anahtar kelime: {dto.Keyword}\n" +
+                          $"Konu açıklaması: {dto.Description}\n\n" +
+                          $"Başlık kullanma, tamamen düz metin olarak yaz. SEO açısından doğal akış olsun."
+                   }
+                }
+            };
+
+            dynamic result = await SendChatAsync(request);
+
+            return new AIResponseDto
+            {
+                content = result.choices[0].message.content,
+                model = request.model,
+                language = "tr"
+            };
         }
     }
 }

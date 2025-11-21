@@ -76,5 +76,23 @@
 
     });
 </script>
+<script>
+    function copyBlog() {
+        var text = document.getElementById("blogText").innerText;
+        navigator.clipboard.writeText(text);
+
+        const btn = event.target.closest("button");
+        btn.innerHTML = "<i class='bi bi-check-lg'></i> Kopyalandı!";
+        btn.classList.add("btn-success");
+
+        setTimeout(() => {
+            btn.innerHTML = "<i class='bi bi-clipboard'></i> Kopyala";
+            btn.classList.remove("btn-success");
+        }, 2000);
+    }
+</script>
+
+
+
 
 

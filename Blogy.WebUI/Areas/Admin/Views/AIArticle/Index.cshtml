@@ -1,0 +1,40 @@
+﻿@model AIArticleDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
+}
+<div class="card shadow p-4">
+    <h4 class="fw-bold mb-3">AI ile Blog Yazısı Oluştur</h4>
+
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Anahtar Kelime</label>
+            <input type="text" asp-for="Keyword" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Konu Açıklaması</label>
+            <textarea asp-for="Description" rows="3" class="form-control" required></textarea>
+        </div>
+
+        <button class="btn btn-primary w-100 fw-bold py-2">Oluştur</button>
+    </form>
+</div>
+
+@if (ViewBag.Article != null)
+{
+    <div class="card shadow p-4 mt-4">
+        <div class="d-flex justify-content-between">
+            <h5 class="fw-bold">Oluşturulan Blog Yazısı</h5>
+
+            <button class="btn btn-outline-secondary" onclick="copyBlog()">
+                <i class="bi bi-clipboard"></i> Kopyala
+            </button>
+        </div>
+
+        <div id="blogText" style="white-space: pre-line; font-size:17px; line-height:1.7;" class="mt-3">
+            @ViewBag.Article
+        </div>
+    </div>
+}
+
