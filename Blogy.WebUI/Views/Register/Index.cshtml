@@ -1,79 +1,76 @@
-﻿
-@model RegisterDto
+﻿@model RegisterDto
 @{
     Layout = null;
 }
-<!doctype html>
-<html lang="en">
 
+<!DOCTYPE html>
+<html lang="tr">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Spike Free Bootstrap Admin Template by WrapPixel</title>
-    <link rel="shortcut icon" type="image/png" href="~/Spike-Bootstrap-1.0.0/src/assets/images/logos/favicon.png" />
+    <meta name="viewport" content="width=device-width">
+
+    <title>Blogy – Kayıt Ol</title>
+
     <link rel="stylesheet" href="~/Spike-Bootstrap-1.0.0/src/assets/css/styles.min.css" />
+    <link rel="stylesheet" href="~/css/register-custom.css" />
 </head>
 
-<body>
-    <!--  Body Wrapper -->
-    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-         data-sidebar-position="fixed" data-header-position="fixed">
-        <div class="position-relative overflow-hidden text-bg-light min-vh-100 d-flex align-items-center justify-content-center">
-            <div class="d-flex align-items-center justify-content-center w-100">
-                <div class="row justify-content-center w-100">
-                    <div class="col-md-8 col-lg-6 col-xxl-3">
-                        <div class="card mb-0">
-                            <div class="card-body">
-                                <div class="text-nowrap logo-img text-center d-block py-3 w-100">
-                                    <h3 class="fw-bold text-primary m-0">Blogy</h3>
-                                </div>
-                                <div class="mb-4">
-                                    <p class="text-center">Kullanıcı bilgilerinizle giriş yapabilirsiniz..</p>
-                                </div>
+<body class="register-body">
 
-                                <form method="post">
-                                    <div class="mb-3">
-                                        <label class="form-label">Adınız</label>
-                                        <input type="text" class="form-control" asp-for="FirstName">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Soyadınız</label>
-                                        <input type="text" class="form-control" asp-for="LastName">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Kullanıcı Adınız</label>
-                                        <input type="text" class="form-control" asp-for="UserName">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Mail Adresiniz</label>
-                                        <input type="email" class="form-control" asp-for="Email">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Şifreniz</label>
-                                        <input type="password" class="form-control" asp-for="Password">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Tekrar Şifreniz</label>
-                                        <input type="password" class="form-control" asp-for="ConfirmPassword">
-                                    </div>
-                                    <span class="text-danger">@Html.ValidationSummary()</span>
-                                    <button class="btn btn-primary w-100 py-8 fs-4 mb-4">Kayıt Ol</button>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <p class="fs-4 mb-0 fw-bold">Zaten hesabınız var mı?</p>
-                                        <a class="text-primary fw-bold ms-2" href="/Login/Index">Giriş Yap</a>
-                                    </div>
-                                </form>
-                            </div>
+    <div class="register-wrapper">
+
+        <div class="register-left">
+            <div class="blob-r1"></div>
+            <div class="blob-r2"></div>
+        </div>
+
+        <div class="register-right">
+            <div class="register-card">
+
+                <h2 class="register-title">Kayıt Ol</h2>
+                <p class="register-sub">Yeni hesabınızı oluşturun.</p>
+
+                <form method="post">
+
+                    <div class="form-row">
+                        <div>
+                            <label class="form-label">Adınız</label>
+                            <input asp-for="FirstName" class="form-control reg-input" />
+                        </div>
+
+                        <div>
+                            <label class="form-label">Soyadınız</label>
+                            <input asp-for="LastName" class="form-control reg-input" />
                         </div>
                     </div>
-                </div>
+
+                    <label class="form-label mt-2">Kullanıcı Adı</label>
+                    <input asp-for="UserName" class="form-control reg-input" />
+
+                    <label class="form-label mt-2">Email</label>
+                    <input asp-for="Email" class="form-control reg-input" />
+
+                    <label class="form-label mt-2">Şifre</label>
+                    <input asp-for="Password" type="password" class="form-control reg-input" />
+
+                    <label class="form-label mt-2">Tekrar Şifre</label>
+                    <input asp-for="ConfirmPassword" type="password" class="form-control reg-input" />
+
+                    <span class="text-danger mt-2 d-block">@Html.ValidationSummary()</span>
+
+                    <button class="btn reg-btn w-100 mt-3">Kayıt Ol</button>
+
+                    <div class="register-footer">
+                        Zaten hesabınız var mı?
+                        <a href="/Login/Index">Giriş Yap</a>
+                    </div>
+
+                </form>
+
             </div>
         </div>
-    </div>
-    <script src="~/Spike-Bootstrap-1.0.0/src/assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="~/Spike-Bootstrap-1.0.0/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- solar icons -->
-    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-</body>
 
+    </div>
+
+</body>
 </html>
