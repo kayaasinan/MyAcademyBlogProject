@@ -9,9 +9,8 @@ namespace Blogy.WebUI.Controllers
     {
         public async Task<IActionResult> Index()
         {
-            var about = await _aboutService.GetAllAsync();
-            var value = about.FirstOrDefault();
-            return View(value);
+            var about = await _aboutService.TGetAboutWithTeamAsync();
+            return View(about);
         }
         public async Task<IActionResult> GenerateAiAbout()
         {

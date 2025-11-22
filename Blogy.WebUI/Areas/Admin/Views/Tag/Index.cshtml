@@ -17,7 +17,9 @@
     <div class="tags-wrapper">
         @foreach (var item in Model)
         {
-            <span class="tag-item @item.TagColor">@item.Name</span>
+            <a href="/Admin/Tag/UpdateTag/@item.Id" class="tag-item @item.TagColor">
+                @item.Name
+            </a>
         }
     </div>
 

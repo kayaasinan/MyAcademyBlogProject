@@ -1,4 +1,5 @@
 ﻿using Blogy.Business.DTOs.Common;
+using Blogy.Business.DTOs.UserDTOs;
 
 namespace Blogy.Business.DTOs.AboutDtos
 {

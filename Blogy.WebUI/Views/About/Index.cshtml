@@ -1,16 +1,15 @@
-﻿
-@model ResultAboutDto
+﻿@model AboutTeamDto
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/Index.cshtml";
 }
 
-<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('@Model.ImageUrl2');">
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('@Model.About.ImageUrl2');">
 	<div class="container">
 		<div class="row same-height justify-content-center">
 			<div class="col-md-6">
 				<div class="post-entry text-center">
-					<h1 class="mb-4">@Model.Title</h1>
+					<h1 class="mb-4">@Model.About.Title</h1>
 				</div>
 			</div>
         </div>
@@ -20,11 +19,11 @@
 <div class="section sec-halfs py-0">
 	<div class="container">
 		<div class="half-content d-lg-flex align-items-stretch">
-			<div class="img" style="background-image: url('@Model.ImageUrl2')" data-aos="fade-in">
+			<div class="img" style="background-image: url('@Model.About.ImageUrl2')" data-aos="fade-in">
 			</div>
 			<div class="text">
 				<h2 class="heading text-primary mb-3">Yapay zeka ile bizi tanıyın..</h2>
-				<p class="mb-4">@Model.Description1</p>
+				<p class="mb-4">@Model.About.Description1</p>
 				<a href="javascript:void(0)" onclick="openAiAbout()" class="btn btn-outline-primary py-2">
 					Hemen Dene
 				</a>
@@ -32,17 +31,39 @@
 		</div>
 
 		<div class="half-content d-lg-flex align-items-stretch">
-			<div class="img order-md-2" style="background-image: url('@Model.ImageUrl1')" data-aos="fade-in">
+			<div class="img order-md-2" style="background-image: url('@Model.About.ImageUrl1')" data-aos="fade-in">
 			</div>
 			<div class="text">
 				<h2 class="heading text-primary mb-3">Neler yapıyoruz?</h2>
-				<p class="mb-4">@Model.Description2</p>
+				<p class="mb-4">@Model.About.Description2</p>
 				<p><a href="#" class="btn btn-outline-primary py-2">Devamını Oku</a></p>
 			</div>
 		</div>
 	</div>
 </div>
+<div class="section">
+	<div class="container">
 
+		<div class="row mb-5">
+			<div class="col-lg-5 mx-auto text-center" data-aos="fade-up">
+				<h2 class="heading text-primary">Ekip Arkadaşlarımız</h2>
+				<p>@Model.About.SubTitle</p>
+			</div>
+		</div>
+
+		<div class="row">
+			@foreach (var item in Model.Team)
+			{
+				<div class="col-lg-4 mb-4 text-center" data-aos="fade-up" data-aos-delay="0">
+					<img src="@item.ImageUrl" alt="Image" class="img-fluid w-50 rounded-circle mb-3">
+					<h5 class="text-black">@item.FullName</h5>
+				</div>
+
+			}		
+		</div>
+
+	</div>
+</div>
 
 
 <div class="modal fade" id="aiAboutModal" tabindex="-1">

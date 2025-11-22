@@ -18,5 +18,6 @@ namespace Blogy.Business.Services.BlogServices
         Task<int> TGetTotalBlogCountAsync();
         Task<ResultBlogDto> TGetMostCommentedBlogAsync();
         Task ChangeBlogStatusAsync(int id, BlogStatus newStatus);
+        Task<List<ResultBlogDto>> TGetBlogsByAccepted();
     }
 }

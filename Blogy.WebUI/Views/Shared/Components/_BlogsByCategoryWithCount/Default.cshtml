@@ -11,7 +11,7 @@
             <li>
                 <a href="/Blog/GetBlogsByCategory/@category.Id">
                     @category.CategoryName
-                    <span>@category.Blogs.Count</span>
+                    <span>@category.Blogs.Count(x=>x.Status==BlogStatus.Accepted)</span>
                 </a>
             </li>
         }

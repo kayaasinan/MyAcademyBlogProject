@@ -17,10 +17,10 @@
                 {
                     <div class="blog-entry d-flex blog-entry-search-item">
                         <a href="#" class="img-link me-4">
-                            <img src="@item.CoverImage" alt="Image" class="img-fluid">
+                            <img src="@item.CoverImage" style="width:300px; height:160px" alt="Image" class="img-fluid">
                         </a>
                         <div>
-                            <span class="date">@item.CreatedDate &bullet; <a href="#">Business</a></span>
+                            <span class="date">@item.CreatedDate.ToShortDateString()&bullet; <a href="#">@item.Category.CategoryName</a></span>
                             <h2><a href="single.html">@item.Title</a></h2>
                             <p>
                                 @(item.Description?.Length > 100
@@ -29,6 +29,7 @@
                         </p>
                             <p><a href="#" class="btn btn-sm btn-outline-primary">Devamını Oku</a></p>
                         </div>
+
                     </div>
                 }
                 <div class="row text-start pt-5 border-top">
@@ -57,37 +58,8 @@
                 <!-- END sidebar-box -->
                 @await Component.InvokeAsync("_BlogsByCategoryLatestBlogsComponent")
                 <!-- END sidebar-box -->
-
-                <div class="sidebar-box">
-                    <h3 class="heading">Categories</h3>
-                    <ul class="categories">
-                        <li><a href="#">Food <span>(12)</span></a></li>
-                        <li><a href="#">Travel <span>(22)</span></a></li>
-                        <li><a href="#">Lifestyle <span>(37)</span></a></li>
-                        <li><a href="#">Business <span>(42)</span></a></li>
-                        <li><a href="#">Adventure <span>(14)</span></a></li>
-                    </ul>
-                </div>
+                @await Component.InvokeAsync("_BlogsByCategoryWithCount")
                 <!-- END sidebar-box -->
-
-                <div class="sidebar-box">
-                    <h3 class="heading">Tags</h3>
-                    <ul class="tags">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Adventure</a></li>
-                        <li><a href="#">Food</a></li>
-                        <li><a href="#">Lifestyle</a></li>
-                        <li><a href="#">Business</a></li>
-                        <li><a href="#">Freelancing</a></li>
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Adventure</a></li>
-                        <li><a href="#">Food</a></li>
-                        <li><a href="#">Lifestyle</a></li>
-                        <li><a href="#">Business</a></li>
-                        <li><a href="#">Freelancing</a></li>
-                    </ul>
-                </div>
-
             </div>
         </div>
     </div>

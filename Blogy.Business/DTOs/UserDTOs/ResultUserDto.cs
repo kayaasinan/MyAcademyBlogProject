@@ -1,4 +1,4 @@
-﻿using Blogy.Entity.Entities;
+﻿using Blogy.Business.DTOs.AboutDtos;
 
 namespace Blogy.Business.DTOs.UserDTOs
 {

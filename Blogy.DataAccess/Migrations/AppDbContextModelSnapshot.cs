@@ -62,7 +62,7 @@ namespace Blogy.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Abouts");
+                    b.ToTable("Abouts", (string)null);
                 });
 
             modelBuilder.Entity("Blogy.Entity.Entities.AppRole", b =>
@@ -223,7 +223,7 @@ namespace Blogy.DataAccess.Migrations
 
                     b.HasIndex("WriterId");
 
-                    b.ToTable("Blogs");
+                    b.ToTable("Blogs", (string)null);
                 });
 
             modelBuilder.Entity("Blogy.Entity.Entities.BlogTag", b =>
@@ -249,7 +249,7 @@ namespace Blogy.DataAccess.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("BlogTags");
+                    b.ToTable("BlogTags", (string)null);
                 });
 
             modelBuilder.Entity("Blogy.Entity.Entities.Category", b =>
@@ -269,7 +269,7 @@ namespace Blogy.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("Blogy.Entity.Entities.Comment", b =>
@@ -302,7 +302,7 @@ namespace Blogy.DataAccess.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("Blogy.Entity.Entities.ContactUs", b =>
@@ -334,7 +334,7 @@ namespace Blogy.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ContactUses");
+                    b.ToTable("ContactUses", (string)null);
                 });
 
             modelBuilder.Entity("Blogy.Entity.Entities.Social", b =>
@@ -362,7 +362,7 @@ namespace Blogy.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Socials");
+                    b.ToTable("Socials", (string)null);
                 });
 
             modelBuilder.Entity("Blogy.Entity.Entities.Tag", b =>
@@ -385,7 +385,7 @@ namespace Blogy.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tags");
+                    b.ToTable("Tags", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

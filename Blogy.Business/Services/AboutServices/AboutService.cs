@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
 using Blogy.Business.DTOs.AboutDtos;
+using Blogy.Business.DTOs.UserDTOs;
 using Blogy.DataAccess.Repositories.AboutRepositories;
 using Blogy.Entity.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Blogy.Business.Services.AboutServices
 {
-    public class AboutService(IAboutRepository _aboutRepository, IMapper _mapper) : IAboutService
+    public class AboutService(IAboutRepository _aboutRepository, IMapper _mapper,UserManager<AppUser> _userManager) : IAboutService
     {
         public async Task CreateAsync(CreateAboutDto dto)
         {
@@ -16,6 +19,21 @@ namespace Blogy.Business.Services.AboutServices
         public async Task DeleteAsync(int id)
         {
             await _aboutRepository.DeleteAsync(id);
+        }
+
+        public async Task<AboutTeamDto> TGetAboutWithTeamAsync()
+        {
+            var about = await _aboutRepository.GetAllAsync();
+            var aboutDto = _mapper.Map<ResultAboutDto>(about.FirstOrDefault());
+
+            var users = await _userManager.GetUsersInRoleAsync("Writer");
+            var userDtos = _mapper.Map<List<ResultUserDto>>(users);
+
+            return new AboutTeamDto
+            {
+                About = aboutDto,
+                Team = userDtos
+            };
         }
 
         public async Task<List<ResultAboutDto>> GetAllAsync()

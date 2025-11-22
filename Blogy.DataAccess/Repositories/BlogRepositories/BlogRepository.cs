@@ -21,6 +21,11 @@ namespace Blogy.DataAccess.Repositories.BlogRepositories
             }
         }
 
+        public async Task<List<Blog>> GetBlogsByAccepted()
+        {
+            return await _table.Where(x=>x.Status== BlogStatus.Accepted).ToListAsync(); 
+        }
+
         public async Task<List<Blog>> GetBlogsByCategoryIdAsync(int categoryId)
         {
             return await _table.Where(x => x.CategoryId == categoryId).Include(x => x.Category).ToListAsync();
@@ -48,7 +53,7 @@ namespace Blogy.DataAccess.Repositories.BlogRepositories
 
         public async Task<List<Blog>> GetLast5BlogsAsync()
         {
-            return await _table.OrderByDescending(x => x.Id).Take(5).ToListAsync();
+            return await _table.Where(x=>x.Status==BlogStatus.Accepted).OrderByDescending(x => x.Id).Take(5).ToListAsync();
         }
 
         public async Task<string> GetLastWriterNameAsync()

@@ -13,7 +13,7 @@ namespace Blogy.DataAccess.Repositories.CategoryRepositories
 
         public async Task<List<Category>> GetCategoriesWithBlogsAsync()
         {
-            return await _context.Categories.AsNoTracking().Include(x=>x.Blogs).ToListAsync();
+            return await _context.Categories.AsNoTracking().Include(x=>x.Blogs.Where(x=>x.Status==BlogStatus.Accepted)).ToListAsync();
         }
     }
 }

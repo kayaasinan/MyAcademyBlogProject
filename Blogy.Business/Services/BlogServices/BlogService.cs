@@ -136,5 +136,11 @@ namespace Blogy.Business.Services.BlogServices
         {
             await _blogRepository.ChangeBlogStatusAsync(id, newStatus);
         }
+
+        public async Task<List<ResultBlogDto>> TGetBlogsByAccepted()
+        {
+            var blogs=await _blogRepository.GetBlogsByAccepted();
+            return _mapper.Map<List<ResultBlogDto>>(blogs);
+        }
     }
 }

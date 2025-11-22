@@ -2,12 +2,13 @@
 using Blogy.Business.DTOs.BlogDtos;
 using Blogy.Business.DTOs.TagDtos;
 using Blogy.DataAccess.Repositories.TagRepositories;
+using Blogy.Entity.Entities;
 
 namespace Blogy.Business.Services.TagServices
 {
     public class TagService(ITagRepository _tagRepository, IMapper _mapper) : ITagService
     {
-        
+
         public Task CreateAsync(CreateTagDto dto)
         {
             throw new NotImplementedException();
@@ -36,9 +37,10 @@ namespace Blogy.Business.Services.TagServices
             return _mapper.Map<ResultTagDto>(tag);
         }
 
-        public Task UpdateAsync(UpdateTagDto dto)
+        public async Task UpdateAsync(UpdateTagDto dto)
         {
-            throw new NotImplementedException();
+            var tag = _mapper.Map<Tag>(dto);
+            await _tagRepository.UpdateAsync(tag);
         }
     }
 }
