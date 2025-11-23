@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using PagedList.Core;
+using System.Drawing.Printing;
 
 namespace Blogy.WebUI.Areas.Admin.Controllers
 {

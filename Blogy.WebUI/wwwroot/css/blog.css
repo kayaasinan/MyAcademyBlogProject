@@ -1,9 +1,23 @@
-﻿
+﻿html, body,
+.container-fluid,
+.body-wrapper,
+.body-wrapper-inner {
+    overflow-x: hidden !important;
+}
+
+
 .admin-card {
     border-radius: 20px;
     border: none;
     box-shadow: 0 12px 30px rgba(0,0,0,0.08);
     padding: 0 !important;
+    overflow: hidden !important;
+    max-width: 100% !important;
+}
+
+.table-responsive {
+    overflow-x: auto !important;
+    max-width: 100% !important;
 }
 
 
@@ -16,12 +30,10 @@
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-
 .admin-table {
     padding: 25px;
 }
 
-   
     .admin-table table tbody tr {
         background: #ffffff;
         transition: .2s ease;
@@ -30,13 +42,13 @@
 
         .admin-table table tbody tr:hover {
             background: #f9fafb;
-            transform: scale(1.01);
+            transform: translateY(-3px);
         }
 
 
 .blog-img {
-    height: 70px;
-    width: 70px;
+    width: 60px;
+    height: 60px;
     border-radius: 12px;
     object-fit: cover;
     margin-right: 15px;
@@ -49,6 +61,11 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
+}
+
+
+.status-select {
+    width: 120px !important;
 }
 
 
@@ -65,3 +82,15 @@
     .btn-circle:hover {
         transform: scale(1.1);
     }
+
+
+.table thead th,
+.table tbody td {
+    white-space: nowrap !important;
+}
+
+
+.card {
+    margin-bottom: 0 !important;
+    overflow: hidden !important;
+}

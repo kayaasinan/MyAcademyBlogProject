@@ -13,27 +13,27 @@
                 </div>
 
                 <form method="post">
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <input type="text" asp-for="Title" class="form-control" placeholder="Başlık Giriniz" />
                         <span class="text-danger" asp-validation-for="Title"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <textarea type="text" asp-for="Description" class="form-control" placeholder="Açıklama Giriniz" rows="8"></textarea>
                         <span class="text-danger" asp-validation-for="Description"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <input type="text" asp-for="CoverImage" class="form-control" placeholder="Kapak Resmi Url Giriniz" />
                         <span class="text-danger" asp-validation-for="CoverImage"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <input type="text" asp-for="BlogImage1" class="form-control" placeholder="Blog Resmi1 Url Giriniz" />
                         <span class="text-danger" asp-validation-for="BlogImage1"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <input type="text" asp-for="BlogImage2" class="form-control" placeholder="Blog Resmi2 Url Giriniz" />
                         <span class="text-danger" asp-validation-for="BlogImage2"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.categories">
                             <option selected="Kategori Seçiniz"></option>
                         </select>
