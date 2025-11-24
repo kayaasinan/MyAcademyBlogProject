@@ -18,7 +18,7 @@ namespace Blogy.DataAccess.Repositories.CommentRepositories
 
         public async Task<List<Comment>> GetCommentsByUserAsync(int userId)
         {
-            return await _table.Include(x=>x.Blog).Include(x=>x.User).Where(x=>x.UserId == userId).OrderByDescending(x=>x.CreatedDate).ToListAsync();
+            return await _table.Include(x=>x.Blog).Include(x=>x.User).Where(x=>x.UserId == userId && x.Status==CommentStatus.Accepted).OrderByDescending(x=>x.CreatedDate).ToListAsync();
         }
 
         public async Task<List<Comment>> GetCommentsForWriterAsync(int writerId)

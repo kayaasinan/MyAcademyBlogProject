@@ -28,7 +28,7 @@ namespace Blogy.DataAccess.Repositories.BlogRepositories
 
         public async Task<List<Blog>> GetBlogsByCategoryIdAsync(int categoryId)
         {
-            return await _table.Where(x => x.CategoryId == categoryId).Include(x => x.Category).ToListAsync();
+            return await _table.Where(x => x.CategoryId == categoryId&& x.Status==BlogStatus.Accepted).Include(x => x.Category).ToListAsync();
         }
 
         public async Task<List<Blog>> GetBlogsByWriterIdAsync(int writerId)
