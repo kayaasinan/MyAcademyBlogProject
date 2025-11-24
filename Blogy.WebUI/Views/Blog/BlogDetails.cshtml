@@ -108,7 +108,7 @@
             <!-- END main-content -->
 
             <div class="col-md-12 col-lg-4 sidebar">
-              
+                @await Component.InvokeAsync("_DefaultOurTeamsComponent", new { id = Model.Id })
                 <!-- END sidebar-box -->
                 @await Component.InvokeAsync("_AISuggestion", new { blogId = Model.Id })
                 <!-- END sidebar-box -->

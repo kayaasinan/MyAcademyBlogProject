@@ -6,5 +6,6 @@ namespace Blogy.Business.DTOs.AboutDtos
     {
         public ResultAboutDto About { get; set; }
         public List<ResultUserDto> Team { get; set; }
+
     }
 }

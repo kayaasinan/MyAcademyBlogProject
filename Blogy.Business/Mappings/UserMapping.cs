@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Blogy.Business.DTOs.AboutDtos;
 using Blogy.Business.DTOs.UserDTOs;
 using Blogy.Entity.Entities;
 using System;
@@ -15,6 +16,7 @@ namespace Blogy.Business.Mappings
         {
             CreateMap<AppUser, ResultUserDto>().ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FirstName + " " + src.LastName));
             CreateMap<AppUser, EditProfileDto>().ReverseMap();
+            CreateMap<ResultAboutDto, ResultUserDto>().ReverseMap();
         }
     }
 }
