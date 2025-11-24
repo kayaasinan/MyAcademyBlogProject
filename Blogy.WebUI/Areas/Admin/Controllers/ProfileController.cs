@@ -11,7 +11,7 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
 {
     [Authorize(Roles = Roles.Admin)]
     [Area(Roles.Admin)]
-    public class ProfileController(UserManager<AppUser> _userManager, IMapper _mapper) : Controller
+    public class ProfileController(UserManager<AppUser> _userManager, IMapper _mapper, SignInManager<AppUser> _signInManager) : Controller
     {
         public async Task<IActionResult> Index()
         {
@@ -47,6 +47,7 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
             user.PhoneNumber = dto.PhoneNumber;
             user.UserName = dto.UserName;
             user.Title = dto.Title;
+            user.Description = dto.Description;
 
 
 
@@ -56,7 +57,8 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
                 ModelState.AddModelError("", "Güncelleme esnasında bir hata oluştu..!");
                 return View(dto);
             }
-            return RedirectToAction("Index", "Blog", new { area = Roles.Admin });
+            await _signInManager.RefreshSignInAsync(user);
+            return RedirectToAction("Index", "Profile", new { area = Roles.Admin });
         }
     }
 }

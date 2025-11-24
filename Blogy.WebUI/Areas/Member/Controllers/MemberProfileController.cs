@@ -11,7 +11,7 @@ namespace Blogy.WebUI.Areas.Member.Controllers
     [Area(Roles.Member)]
     [Authorize(Roles = Roles.Member)]
   
-    public class MemberProfileController(UserManager<AppUser> _userManager, IMapper _mapper) : Controller
+    public class MemberProfileController(UserManager<AppUser> _userManager, IMapper _mapper, SignInManager<AppUser> _signInManager) : Controller
     {
         public async Task<IActionResult> Index()
         {
@@ -47,6 +47,7 @@ namespace Blogy.WebUI.Areas.Member.Controllers
             user.PhoneNumber = dto.PhoneNumber;
             user.UserName = dto.UserName;
             user.Title = dto.Title;
+            user.Description = dto.Description;
 
 
 
@@ -56,6 +57,7 @@ namespace Blogy.WebUI.Areas.Member.Controllers
                 ModelState.AddModelError("", "Güncelleme esnasında bir hata oluştu..!");
                 return View(dto);
             }
+            await _signInManager.RefreshSignInAsync(user);
             return RedirectToAction("Index", "MemberProfile", new { area = Roles.Member });
         }
     }

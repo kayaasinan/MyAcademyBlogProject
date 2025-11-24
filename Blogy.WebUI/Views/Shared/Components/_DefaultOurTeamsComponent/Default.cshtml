@@ -8,7 +8,7 @@
         <div class="bio-body">
             <h2>@Model.FullName</h2>
             <p class="mb-4">@(Model.Description?.Length > 150 ? Model.Description.Substring(0, 150) + "..." : Model.Description)</p>
-            <p><a href="#" class="btn btn-primary btn-sm rounded px-2 py-2">Profilimi Gör</a></p>
+            <p><a href="/About/WriterDetails/@Model.Id" class="btn btn-primary btn-sm rounded px-2 py-2">Profilimi Gör</a></p>
         </div>
     </div>
 </div>

@@ -18,7 +18,11 @@
                 <img src="@Model.ImageUrl" alt="Profil Resmi" class="rounded-circle border" style="width:150px; height:150px; object-fit:cover;">
             </div>
             <div class="row">
+                <div class="col-md-12">
+                    <label>Hakkımda</label>
+                    <textarea asp-for="Description" class="form-control mb-3" rows="3"></textarea>
 
+                </div>
                 <div class="col-md-6">
                     <label>Ad</label>
                     <input type="text" asp-for="FirstName" class="form-control mb-3" required />
@@ -50,6 +54,7 @@
             </div>
 
             <input type="hidden" asp-for="ImageUrl" />
+            <input type="hidden" asp-for="Description" />
 
 
             <div class="mt-3">

@@ -55,7 +55,9 @@
 			@foreach (var item in Model.Team)
 			{
 				<div class="col-lg-4 mb-4 text-center" data-aos="fade-up" data-aos-delay="0">
-					<img src="@item.ImageUrl" alt="Image" class="img-fluid w-50 rounded-circle mb-3">
+					<a href="/About/WriterDetails/@item.Id">
+						<img src="@item.ImageUrl" alt="Image" class="img-fluid w-50 rounded-circle mb-3" />
+					</a>
 					<h5 class="text-black">@item.FullName</h5>
 				</div>
 

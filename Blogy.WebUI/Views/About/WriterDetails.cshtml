@@ -1,0 +1,24 @@
+﻿@model ResultUserDto
+@{
+    ViewData["Title"] = "WriterDetails";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+
+<div class="section py-5">
+    <div class="container">
+        <div class="row g-5 align-items-start">
+
+            <div class="col-lg-4">
+                <img src="@Model.ImageUrl" class="img-fluid rounded shadow-sm" style="object-fit: cover; width: 400px; height: 400px;" />
+
+            </div>
+
+            <div class="col-lg-8">
+                <h2 class="text-black h4 mb-3">@Model.FullName / @Model.Title</h2>
+                <p>@Model.Description</p>
+            </div>
+
+        </div>
+    </div>
+</div>
