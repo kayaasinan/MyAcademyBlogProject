@@ -129,7 +129,7 @@ namespace Blogy.Business.Services.AIServices
                    new AIMessageDto
                    {
                         role = "user",
-                        content = $"Aşağıdaki bilgilerle yaklaşık 1000 kelimelik, modern ve akıcı, düz paragraf formatında profesyonel bir blog yazısı üret.\n\n" +
+                        content = $"Aşağıdaki bilgilerle yaklaşık 400-600 kelimelik, modern ve akıcı, düz paragraf formatında profesyonel bir blog yazısı üret.\n\n" +
                           $"Anahtar kelime: {dto.Keyword}\n" +
                           $"Konu açıklaması: {dto.Description}\n\n" +
                           $"Başlık kullanma, tamamen düz metin olarak yaz. SEO açısından doğal akış olsun."

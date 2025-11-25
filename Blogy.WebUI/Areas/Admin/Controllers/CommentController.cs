@@ -43,5 +43,10 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
             await _commentService.CreateAsync(dto);
             return RedirectToAction(nameof(Index));
         }
+        public async Task<IActionResult> DeleteComment(int id)
+        {
+            await _commentService.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
