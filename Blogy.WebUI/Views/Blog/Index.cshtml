@@ -53,11 +53,11 @@
                         <input type="text" class="form-control" id="s" placeholder="Type a keyword and hit enter">
                     </form>
                 </div>
-                <!-- END sidebar-box -->
+          
                 @await Component.InvokeAsync("_BlogsByCategoryLatestBlogsComponent")
-                <!-- END sidebar-box -->
+         
                 @await Component.InvokeAsync("_BlogsByCategoryWithCount")
-                <!-- END sidebar-box -->
+      
                 @await Component.InvokeAsync("_AllTagsComponent")
             </div>
         </div>
