@@ -35,10 +35,56 @@ Ayrıca sistem, okunan bloga göre AI tabanlı içerik önerileri sunar ve admin
 | 🔧 Katmanlar-Arası DI   | Built-in Dependency Injection Container |
 | 🔒 Güvenlik / Bot Koruma | Google reCAPTCHA v3 |
 
-<video width="100%" controls>
-  <source src="Blogy.WebUI/wwwroot/videos/blogyProject.mp4" type="video/mp4">
-</video>
+## 📷 Ekran Görüntüleri
+---
+##  Ana Sayfa
+**📌 Ana Sayfa** 
 
+![HomePage](https://github.com/kayaasinan/MyAcademyBlogProject/blob/master/Blogy.WebUI/wwwroot/images/homapage.png?raw=true) 
+
+**📌 Hakkımızda** 
+
+![About](https://github.com/kayaasinan/MyAcademyBlogProject/blob/master/Blogy.WebUI/wwwroot/images/about.png?raw=true) 
+
+**📌 Blog** 
+
+![Blog](https://github.com/kayaasinan/MyAcademyBlogProject/blob/master/Blogy.WebUI/wwwroot/images/blog.png?raw=true) 
+
+**📌 Blog Detayları** 
+
+![BlogDetails](https://github.com/kayaasinan/MyAcademyBlogProject/blob/master/Blogy.WebUI/wwwroot/images/blogdetail1.png?raw=true) 
+
+![BlogDetails](https://github.com/kayaasinan/MyAcademyBlogProject/blob/master/Blogy.WebUI/wwwroot/images/blogdetail2.png?raw=true) 
+
+**📌 Chatbox** 
+
+![Chatbox](https://github.com/kayaasinan/MyAcademyBlogProject/blob/master/Blogy.WebUI/wwwroot/images/ai-chatbox.png?raw=true) 
+
+##  Admin Paneli
+
+**📌 Dashboard** 
+
+![Dashboard](https://github.com/kayaasinan/MyAcademyBlogProject/blob/master/Blogy.WebUI/wwwroot/images/dashboard.png?raw=true) 
+
+**📌 Bloglar** 
+
+![Blog](https://github.com/kayaasinan/MyAcademyBlogProject/blob/master/Blogy.WebUI/wwwroot/images/admin%20blog.png?raw=true) 
+
+**📌 Yorumlar** 
+
+![Comment](https://github.com/kayaasinan/MyAcademyBlogProject/blob/master/Blogy.WebUI/wwwroot/images/admin%20comment.png?raw=true) 
+
+**📌 Kullanıcılar** 
+
+![User](https://github.com/kayaasinan/MyAcademyBlogProject/blob/master/Blogy.WebUI/wwwroot/images/user.png?raw=true) 
+
+**📌 AI- Makale** 
+
+![ai-article](https://github.com/kayaasinan/MyAcademyBlogProject/blob/master/Blogy.WebUI/wwwroot/images/ai-article.png?raw=true) 
+
+**📌 Sosyal Meyda** 
+
+![Social](https://github.com/kayaasinan/MyAcademyBlogProject/blob/master/Blogy.WebUI/wwwroot/images/admin%20social.png?raw=true) 
 
 
 
