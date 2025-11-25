@@ -35,7 +35,7 @@ Ayrıca sistem, okunan bloga göre AI tabanlı içerik önerileri sunar ve admin
 | 🔧 Katmanlar-Arası DI   | Built-in Dependency Injection Container |
 | 🔒 Güvenlik / Bot Koruma | Google reCAPTCHA v3 |
 
-
+https://www.youtube.com/watch?v=ozhrZzIY5jA
 
 
 
