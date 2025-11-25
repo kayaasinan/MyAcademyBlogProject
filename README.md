@@ -36,8 +36,7 @@ Ayrıca sistem, okunan bloga göre AI tabanlı içerik önerileri sunar ve admin
 | 🔒 Güvenlik / Bot Koruma | Google reCAPTCHA v3 |
 
 <video width="100%" controls>
-  <source src="https://raw.githubusercontent.com/kayaasinan/MyAcademyBlogProject/master/Blogy.WebUI/wwwroot/videos/Blogy.mp4" type="video/mp4">
-  Tarayıcınız video oynatmayı desteklemiyor.
+  <source src="Blogy.WebUI/wwwroot/videos/blogyProject.mp4" type="video/mp4">
 </video>
 
 
