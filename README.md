@@ -35,7 +35,12 @@ Ayrıca sistem, okunan bloga göre AI tabanlı içerik önerileri sunar ve admin
 | 🔧 Katmanlar-Arası DI   | Built-in Dependency Injection Container |
 | 🔒 Güvenlik / Bot Koruma | Google reCAPTCHA v3 |
 
-https://www.youtube.com/watch?v=ozhrZzIY5jA
+<video width="100%" controls>
+  <source src="https://raw.githubusercontent.com/kayaasinan/MyAcademyBlogProject/master/Blogy.WebUI/wwwroot/videos/Blogy.mp4" type="video/mp4">
+  Tarayıcınız video oynatmayı desteklemiyor.
+</video>
+
+
 
 
 
