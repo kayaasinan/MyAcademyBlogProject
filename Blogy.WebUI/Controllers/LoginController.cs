@@ -1,22 +1,13 @@
 ﻿using Blogy.Business.DTOs.UserDTOs;
+using Blogy.Business.Services.GoogleServices;
 using Blogy.Entity.Entities;
-using Blogy.WebUI.Consts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blogy.WebUI.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController(SignInManager<AppUser> _signInManager,IRecaptchaService _recaptchaService) : Controller
     {
-        private readonly SignInManager<AppUser> _signInManager;
-        private readonly UserManager<AppUser> _userManager;
-
-        public LoginController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
-        {
-            _signInManager = signInManager;
-            _userManager = userManager;
-        }
-
         public IActionResult Index()
         {
             return View();
@@ -26,12 +17,19 @@ namespace Blogy.WebUI.Controllers
         {
             if (!ModelState.IsValid)
                 return View(dto);
+            bool response = await _recaptchaService.VerifyAsync(dto.RecaptchaToken);
+            if (!response)
+            {
+                ModelState.AddModelError("", "Robot doğrulaması başarısız!");
+                return View(dto);
+            }
             var result = await _signInManager.PasswordSignInAsync(dto.UserName, dto.Password, false, false);
             if (!result.Succeeded)
             {
                 ModelState.AddModelError(string.Empty, "Kullanıcı adı veya şifre hatalı");
                 return View(dto);
             }
+            TempData["CaptchaSuccess"] = true;
             return RedirectToAction("Index", "Default");
         }
         public async Task<IActionResult> Logout()

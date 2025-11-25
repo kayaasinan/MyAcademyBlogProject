@@ -32,7 +32,7 @@
                 <p class="login-sub">Kullanıcı bilgilerinizle giriş yapabilirsiniz.</p>
 
                 <form method="post">
-
+                    <input type="hidden" asp-for="RecaptchaToken" id="recaptchaResponse" />
                     <label class="form-label mt-3">Kullanıcı Adı</label>
                     <input type="text" asp-for="UserName" class="form-control login-input" />
 
@@ -56,3 +56,16 @@
 
 </body>
 </html>
+
+<script src="https://www.google.com/recaptcha/api.js?render=@(Configuration["ReCaptcha:SiteKey"])"></script>
+
+
+
+<script>
+    grecaptcha.ready(function () {
+        grecaptcha.execute('@Configuration["ReCaptcha:SiteKey"]', { action: 'login' })
+            .then(function (token) {
+                document.getElementById("recaptchaResponse").value = token;
+            });
+    });
+</script>

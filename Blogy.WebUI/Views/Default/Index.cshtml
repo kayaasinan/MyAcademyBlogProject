@@ -10,3 +10,21 @@
 
 @await Component.InvokeAsync("_DefaultBlogsComponent")
 
+
+@section Scripts {
+    @if (TempData["CaptchaSuccess"] != null)
+    {
+        <script>
+            Swal.fire({
+                toast: true,
+                position: "bottom-end",
+                icon: "success",
+                title: "Güvenlik doğrulandı",
+                text: "ReCAPTCHA v3 ile girişiniz doğrulandı.",
+                showConfirmButton: false,
+                timer: 4000,
+                timerProgressBar: true
+            });
+        </script>
+    }
+}

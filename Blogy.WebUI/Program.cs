@@ -1,4 +1,5 @@
 using Blogy.Business.Extensions;
+using Blogy.Business.Services.GoogleServices;
 using Blogy.DataAccess.Extensions;
 using Blogy.WebUI.Filters;
 
@@ -7,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddServicesExt();
 builder.Services.AddRepositoriesExt(builder.Configuration);
-
+builder.Services.AddHttpClient<IRecaptchaService, RecaptchaService>();
 
 builder.Services.AddControllersWithViews(opt =>
 {

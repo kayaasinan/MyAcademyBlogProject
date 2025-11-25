@@ -10,5 +10,6 @@ namespace Blogy.Business.DTOs.UserDTOs
     {
         public string UserName { get; set; }
         public string Password { get; set; }
+        public string RecaptchaToken { get; set; }
     }
 }
